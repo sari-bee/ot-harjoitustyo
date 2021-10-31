@@ -2,9 +2,9 @@
 
 Tämä on *repositorio*, jota käytän **Ohjelmistotekniikan** kurssilla Helsingin yliopistossa syksyllä 2021.
 
-##Tehtävät
+## Tehtävät
 
-###Viikko 1
+### Viikko 1
 
 [Komentorivi](https://github.com/sari-bee/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
