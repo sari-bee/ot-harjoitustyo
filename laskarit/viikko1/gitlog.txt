@@ -1,0 +1,113 @@
+commit 2c54903668a79bdfce1f8bccc90027dcd377fb56
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 21:14:06 2021 +0200
+
+    viimeiset muutokset
+
+ tiedostoja/file2.txt                 | 0
+ tiedostoja/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 70058c2e23c4810cf7ea44afa04f7d9d2114f84e
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 21:06:06 2021 +0200
+
+    lisätty tiedostoja-kansio
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 94eafdeaeb146911852e00da212a73bbd3bf342f
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 21:03:29 2021 +0200
+
+    lisäykset ja poistot
+
+ eka.txt    | 5 ++---
+ kolmas.txt | 4 +++-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+commit 6ef6c50d3174c7f85b119cbdbe0b2d9b562b2df5
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 21:01:02 2021 +0200
+
+    uudelleennimentä
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit c80506ee018a9d22dc037a317ba7bd27c0bfbd19
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 20:59:52 2021 +0200
+
+    toinen poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 4c8224942af93df13e4734b789571faf68fe906e
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 20:58:39 2021 +0200
+
+    muutokset
+
+ tiedosto.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit cd0c527889e9b8c14472efbfe49ea2633da40123
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 20:56:45 2021 +0200
+
+    lisätty tekstiä
+
+ tiedosto.txt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+commit b602c3fb5fdcfb3293d8dafeccd994ae67ad0b3f
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 20:55:06 2021 +0200
+
+    lisätty kansio
+
+ stuff/stuff.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 85687835c83720fe787361d6c927d248623949ac
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 20:54:31 2021 +0200
+
+    muutettu tiedostoja
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 4c80cabe844b5501af0ae18ab76c02a8ec974339
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 20:53:37 2021 +0200
+
+    lisätty kolmas
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2916c1618a130293802ba0919b8f8ccfbe708101
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 20:52:53 2021 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 33d2af5edef94f2c1821be4fbc906cd6e4cf7bea
+Author: Sari Bäckman <sari.m.backman@gmail.com>
+Date:   Sun Oct 31 19:41:05 2021 +0200
+
+    tiedosto-txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
