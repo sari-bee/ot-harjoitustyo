@@ -1,6 +1,6 @@
 /laskarit/viikko2/unicafe/src/__pycache__/
 /laskarit/viikko2/unicafe/src/tests/__pycache__/
-/laskarit/viikko2/unicafe/.coverage
+/laskarit/viikko2/maksukortti/.coverage
 /laskarit/viikko2/unicafe/htmlcov/
 .DS_store
 /laskarit/.DS_Store
@@ -8,3 +8,4 @@
 /laskarit/viikko2/maksukortti/.DS_Store
 /laskarit/viikko2/maksukortti/src/.DS_Store
 /laskarit/viikko2/unicafe/.DS_Store
+/laskarit/viikko2/unicafe/.coveragerc
