@@ -16,3 +16,5 @@ Tämä on *repositorio*, jota käytän **Ohjelmistotekniikan** kurssilla Helsing
 
 [Unicafe](https://github.com/sari-bee/ot-harjoitustyo/tree/master/laskarit/viikko2/unicafe)
 
+[Testikattavuusraportti](https://github.com/sari-bee/ot-harjoitustyo/blob/master/laskarit/viikko2/Näyttökuva%202021-11-8%20kello%2023.01.33.png)
+
