@@ -12,7 +12,7 @@ Tämä on *repositorio*, jota käytän **Ohjelmistotekniikan** kurssilla Helsing
 
 ### Viikko 2
 
-[Maksukortti] (https://github.com/sari-bee/ot-harjoitustyo/tree/master/laskarit/viikko2/maksukortti)
+[Maksukortti](https://github.com/sari-bee/ot-harjoitustyo/tree/master/laskarit/viikko2/maksukortti)
 
-[Unicafe] (https://github.com/sari-bee/ot-harjoitustyo/tree/master/laskarit/viikko2/unicafe)
+[Unicafe](https://github.com/sari-bee/ot-harjoitustyo/tree/master/laskarit/viikko2/unicafe)
 
