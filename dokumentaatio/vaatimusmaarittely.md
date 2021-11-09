@@ -24,9 +24,9 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 
 ### Alkunäyttö
 
-- Käyttäjä voi luoda itselleen käyttäjäroolin nimen perusteella
-- Käyttäjäroolin nimen tulee olla uniikki
-- Ohjelman avautuessa käyttäjä valitsee käyttäjäroolinsa nimellä valikosta
+- Käyttäjä voi tunnistautua valikosta löytyvän käyttäjänimen perusteella
+- Jos käyttäjää ei löydy valikosta, käyttäjänimen voi lisätä painikkeesta
+- Käyttäjänimen tulee olla uniikki
 
 ### Päänäyttö
 
@@ -39,7 +39,7 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 - Käyttäjän nimi tallentuu hänen syöttämiensä tapausten yhteyteen
 - Tallennusaika tallentuu tapauksen tallennuksen yhteydessä
 - Tallenna-painikkeella kaikki syötetyt tulokset tallentuvat tiedostoon, joka on paikallisen koneen levyllä
-- Tallennus ei onnistu jos näytenumero-kenttä on tyhjä
+- Tallennus ei onnistu jos näytenumeroa ei ole annettu
 - Tyhjennä-painikkeella päänäytön voi tyhjentää tallentamatta
 
 ### Yleiset vaatimukset
