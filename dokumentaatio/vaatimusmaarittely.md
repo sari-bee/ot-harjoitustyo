@@ -15,6 +15,9 @@ Sovellus koostuu neljästä eri näkymästä:
 - Päänäyttö, johon käyttäjä syöttää veriryhmämäärityksen reaktiovoimakkuudet, saa tulkinnan ja voi syöttää kommenteja sekä tallentaa tapauksen tiedot
 - Jatkotutkimusnäyttö, johon käyttäjä voi syöttää suositeltujen jatkotutkimusten tuloksia
 - Historianäyttö, jossa historiatietoja voi hakea ja selata
+
+![Käyttöliittymäluonnos](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/UI.jpg)
+
 Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainittuja toiminnallisuuksia.
 
 ## Perusversion toiminnallisuudet
