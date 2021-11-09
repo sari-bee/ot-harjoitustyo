@@ -1,4 +1,4 @@
-# Sari B:n repositorio
+# Ohjelmistotekniikka
 
 Tämä on *repositorio*, jota käytän **Ohjelmistotekniikan** kurssilla Helsingin yliopistossa syksyllä 2021.
 
