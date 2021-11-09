@@ -1,4 +1,4 @@
-### Vaatimusmäärittely
+# Vaatimusmäärittely
 
 ## Sovelluksen tarkoitus
 
@@ -22,13 +22,13 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 
 ## Perusversion toiminnallisuudet
 
-# Alkunäyttö
+### Alkunäyttö
 
 - Käyttäjä voi luoda itselleen käyttäjäroolin nimen perusteella
 - Käyttäjäroolin nimen tulee olla uniikki
 - Ohjelman avautuessa käyttäjä valitsee käyttäjäroolinsa nimellä valikosta
 
-# Päänäyttö
+### Päänäyttö
 
 - Käyttäjä syöttää veriryhmämäärityksen reaktiovoimakkuudet kenttiin
 - Sovellus antaa käyttäjälle tiedon, onko veriryhmämääritys selvä
@@ -42,24 +42,24 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 - Tallennus ei onnistu jos näytenumero-kenttä on tyhjä
 - Tyhjennä-painikkeella päänäytön voi tyhjentää tallentamatta
 
-# Yleiset vaatimukset
+### Yleiset vaatimukset
 
 - Sovelluksen tulee toimia Linux- ja OSX-käyttöjärjestelmissä
 - Käyttäjä kirjautuu ulos sulkemalla sovelluksen
 
 ## Jatkokehitysideat
 
-# Päänäyttö
+### Päänäyttö
 
 - Epäselville veriryhmille kuvataan, missä reaktiossa/reaktioissa epäselvyys on
 - Epäselville veriryhmille annetaan tarkempia jatkotutkimusehdotuksia epäselvyyden tyypin mukaan
 
-# Historianäyttö
+### Historianäyttö
 
 - Historianäytössä käyttäjä voi selata kaikkia talletettuja tapauksia
 - Käyttäjä voi hakea aiempia tapauksia käyttäjänimen tai näytenumeron perusteella
 
-# Jatkotutkimusnäyttö
+### Jatkotutkimusnäyttö
 
 - Jatkotutkimusnäytössä näytetään täytettäviä kenttiä suositeltujen jatkotutkimusten perusteella
 - Jatkotutkimusnäyttöön syötetyt tulokset tallentuvat näytteen muiden tietojen yhteyteen
