@@ -6,7 +6,7 @@ Sovellus auttaa verikeskuksen laboratoriohoitajaa potilaan veriryhmämäärityks
 
 ## Käyttäjäroolit
 
-Sovelluksella on vain yksi käyttäjätyyppi, kirjautuminen tapahtuu nimen perusteella.
+Sovelluksella on vain yksi käyttäjärooli, kirjautuminen tapahtuu nimen perusteella.
 
 ## Käyttöliittymäluonnos
 
