@@ -10,3 +10,5 @@
 /laskarit/viikko2/unicafe/.DS_Store
 /laskarit/viikko2/unicafe/.coveragerc
 /laskarit/viikko2/unicafe/.coverage
+/src/entities/__pycache__/
+/src/services/__pycache__/
