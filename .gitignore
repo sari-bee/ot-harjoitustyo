@@ -13,3 +13,4 @@
 /src/entities/__pycache__/
 /src/services/__pycache__/
 /.vscode/
+.coverage
