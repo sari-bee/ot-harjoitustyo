@@ -14,3 +14,5 @@
 /src/services/__pycache__/
 /.vscode/
 .coverage
+/src/tests/__pycache__/
+/src/tests/services/__pycache__/
