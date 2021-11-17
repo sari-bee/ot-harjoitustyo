@@ -1,25 +1,27 @@
 import cowsay
-from entities import sample
+from entities.sample import Sample
 
 cowsay.cow("Tervetuloa veriryhmäapuriin!")
+print(" ")
+initial_id = 0
+sample = Sample(initial_id)
+while True:
+    print(" ")
+    id = input("Anna näytenumero, 'lopeta' lopettaa: ")
+    if id == "lopeta":
+        break
+    else:
+        sample.id = id
 
-id = input("Anna näytenumero: ")
+        print("Anna reaktiovoimakkuudet numeroina 0 - 4:")
+        anti_a = int(input("anti-A: "))
+        anti_b = int(input("anti-B: "))
+        anti_d = int(input("anti-D: "))
+        control = int(input("control: "))
+        a = int(input("A1-solu: "))
+        b = int(input("B-solu: "))
+        sample.input_reactions(anti_a, anti_b, anti_d, control, a, b)
 
-sample = sample.Sample(id)
+        sample.run_checks()
 
-print("Anna reaktiovoimakkuudet:")
-anti_a = int(input("anti-A: "))
-anti_b = int(input("anti-B: "))
-anti_d = int(input("anti-D: "))
-#maybe check for dp's here?
-sample.input_cell_reactions(anti_a, anti_b, anti_d)
-control = int(input("control: "))
-sample.input_control_reaction(control)
-a = int(input("A1-solu: "))
-b = int(input("B-solu: "))
-sample.input_plasma_reactions(a, b)
-
-print(sample.id)
-sample.print()
-sample.list_all_exceptions()
 
