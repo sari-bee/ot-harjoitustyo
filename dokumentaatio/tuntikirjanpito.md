@@ -6,4 +6,5 @@ Päivä | Tunnit | Tehtävä
 9.11. | 3 h | Vaatimuslistaus ja käyttöliittymähahmotelma
 16.11. | 2 h | Arkkitehtuurisuunnittelua ja projektin alustus
 17.11. | 3 h | Veriryhmälogiikan koodausta ja ensimmäiset testit
-yht. | 10 h |
+18.11. | 1 h | Testien täydennystä
+yht. | 11 h |
