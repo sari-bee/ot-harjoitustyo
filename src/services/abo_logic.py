@@ -15,7 +15,7 @@ class ABO_logic:
         if cell_abo == plasma_abo:
             return f"Potilaan veriryhmä on {cell_abo} RhD {d}"
         else:
-            return "ABO-logiikka ei toteudu!"
+            return f"Potilaan RhD-veriryhmä on RhD {d}. Potilaan ABO-veriryhmä ei ole selvä. ABO on solupuolelta {cell_abo}, mutta plasmapuolelta {plasma_abo}. Tee jatkotutkimuksia ja anna potilaalle tarvittaessa O ryhmän punasoluja ja AB plasmaa."
 
 
     def cell_reaction_abo(self, anti_a: int, anti_b: int):
