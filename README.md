@@ -40,6 +40,8 @@ poetry run invoke test
 
 ## Mahdollisia testitapauksia
 
+Näytenumeroksi voit antaa minkä vain merkkijonon.
+
 Selvä veriryhmä A RhD neg: anti-A 4, anti-B 0, anti-D 0, control 0, A1-solu 0, B-solu 4
 
 Ei-hyväksyttävä reaktiovoimakkuus anti-A:lla: anti-A 2, anti-B 0, anti-D 0, control 0, A1-solu 0, B-solu 4
