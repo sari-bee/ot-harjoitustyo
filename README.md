@@ -40,8 +40,8 @@ poetry run invoke test
 
 ## Mahdollisia testitapauksia
 
-Selvä veriryhmä A RhD neg: Anti-A 4, Anti-B 0, Anti-D 0, kontrolli 0, A-solu 0, B-solu 4
+Selvä veriryhmä A RhD neg: anti-A 4, anti-B 0, anti-D 0, control 0, A1-solu 0, B-solu 4
 
-Ei-hyväksyttävä reaktiovoimakkuus anti-A:lla: Anti-A 2, Anti-B 0, Anti-D 0, kontrolli 0, A-solu 0, B-solu 4
+Ei-hyväksyttävä reaktiovoimakkuus anti-A:lla: anti-A 2, anti-B 0, anti-D 0, control 0, A1-solu 0, B-solu 4
 
-ABO-logiikka ei toteudu: Anti-A 4, Anti-B 0, Anti-D 0, kontrolli 0, A-solu 0, B-solu 0
+ABO-logiikka ei toteudu: anti-A 4, anti-B 0, anti-D 0, control 0, A1-solu 0, B-solu 0
