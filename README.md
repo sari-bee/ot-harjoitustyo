@@ -2,6 +2,8 @@
 
 Sovelluksen tarkoituksena on toimia tukena veriryhmämäärityksen tulkinnassa, jatkotutkimusten tarpeen arvioinnissa ja potilaan verivalmisteiden valinnassa. Käyttäjä syöttää sovellukseen veriryhmämäärityksen raakatulokset ja saa tulkinnan tuloksille.
 
+[Releaset](https://github.com/sari-bee/ot-harjoitustyo/releases)
+
 ## Python-versio
 
 Sovellus on tarkoitettu käytettäväksi Python-versiolla 3.8 tai korkeampi.
