@@ -7,4 +7,5 @@ Päivä | Tunnit | Tehtävä
 16.11. | 2 h | Arkkitehtuurisuunnittelua ja projektin alustus
 17.11. | 3 h | Veriryhmälogiikan koodausta ja ensimmäiset testit
 18.11. | 2 h | Veriryhmälogiikan parannusta ja testien täydennystä
-yht. | 12 h |
+21.11. | 1 h | Readmen päivitys ja suoritettavan version tarkistus
+yht. | 13 h |

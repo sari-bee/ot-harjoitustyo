@@ -1,38 +1,47 @@
-# Ohjelmistotekniikka
+# Ohjelmistotekniikan harjoitustyö: Veriryhmäapuri
 
-Tämä on *repositorio*, jota käytän **Ohjelmistotekniikan** kurssilla Helsingin yliopistossa syksyllä 2021.
+Sovelluksen tarkoituksena on toimia tukena veriryhmämäärityksen tulkinnassa, jatkotutkimusten tarpeen arvioinnissa ja potilaan verivalmisteiden valinnassa. Käyttäjä syöttää sovellukseen veriryhmämäärityksen raakatulokset ja saa tulkinnan tuloksille.
 
-## Tehtävät
+## Python-versio
 
-### Viikko 1
+Sovellus on tarkoitettu käytettäväksi Python-versiolla 3.8 tai korkeampi.
 
-[Komentorivi](https://github.com/sari-bee/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
-[Git-harjoittelu](https://github.com/sari-bee/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-### Viikko 2
-
-[Maksukortti](https://github.com/sari-bee/ot-harjoitustyo/tree/master/laskarit/viikko2/maksukortti)
-
-[Unicafe](https://github.com/sari-bee/ot-harjoitustyo/tree/master/laskarit/viikko2/unicafe)
-
-[Testikattavuusraportti](https://github.com/sari-bee/ot-harjoitustyo/blob/master/laskarit/viikko2/Näyttökuva%202021-11-8%20kello%2023.01.33.png)
-
-### Viikko 3
-
-[Monopoli 1](https://github.com/sari-bee/ot-harjoitustyo/blob/master/laskarit/viikko3/1monopoli.jpg)
-
-[Monopoli 2](https://github.com/sari-bee/ot-harjoitustyo/blob/master/laskarit/viikko3/2monopoli.jpg)
-
-[Kone](https://github.com/sari-bee/ot-harjoitustyo/blob/master/laskarit/viikko3/3kone.png)
-
-[HKL](https://github.com/sari-bee/ot-harjoitustyo/blob/master/laskarit/viikko3/4matkakortti.png)
-
-## Harjoitustyö
-
-### Dokumentaatio
+## Dokumentaatio
 
 [Vaatimusmäärittely](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+## Asennus ja komentorivikäskyt
+
+Asenna riippuvuudet komennolla
+
+```bash
+poetry install
+```
+
+Käynnistä sovellus komennolla
+
+```bash
+poetry run invoke start
+```
+
+Aja testit ja tuota testikattavuusraportti komennolla
+
+```bash
+poetry run invoke coverage-report
+```
+
+Pelkät testit voit ajaa komennolla
+
+```bash
+poetry run invoke test
+```
+
+## Mahdollisia testitapauksia
+
+Selvä veriryhmä A RhD neg: Anti-A 4, Anti-B 0, Anti-D 0, kontrolli 0, A-solu 0, B-solu 4
+
+Ei-hyväksyttävä reaktiovoimakkuus anti-A:lla: Anti-A 2, Anti-B 0, Anti-D 0, kontrolli 0, A-solu 0, B-solu 4
+
+ABO-logiikka ei toteudu: Anti-A 4, Anti-B 0, Anti-D 0, kontrolli 0, A-solu 0, B-solu 0
