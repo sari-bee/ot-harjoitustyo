@@ -30,28 +30,28 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 
 ### Päänäyttö
 
-- Käyttäjä syöttää veriryhmämäärityksen reaktiovoimakkuudet kenttiin
-- Sovellus antaa käyttäjälle tiedon, onko veriryhmämääritys selvä
-- Jos veriryhmämääritys on selvä, sovellus antaa veriryhmän tulkinnan
-- Jos veriryhmämääritys on epäselvä, sovellus ohjaa käyttäjää tekemään jatkotutkimuksia
-- Käyttäjä voi syöttää näytenumeron, joka yksilöi näytteen
-- Käyttäjä voi syöttää tuloksen yhteyteen kommentteja
+- Käyttäjä syöttää veriryhmämäärityksen reaktiovoimakkuudet kenttiin (tehty)
+- Sovellus antaa käyttäjälle tiedon, onko veriryhmämääritys selvä (tehty)
+- Jos veriryhmämääritys on selvä, sovellus antaa veriryhmän tulkinnan (tehty)
+- Jos veriryhmämääritys on epäselvä, sovellus ohjaa käyttäjää tekemään jatkotutkimuksia (tehty)
+- Käyttäjä voi syöttää näytenumeron, joka yksilöi näytteen (tehty)
+- Käyttäjä voi syöttää tuloksen yhteyteen kommentteja (tehty)
 - Käyttäjän nimi tallentuu hänen syöttämiensä tapausten yhteyteen
 - Tallennusaika tallentuu tapauksen tallennuksen yhteydessä
 - Tallenna-painikkeella kaikki syötetyt tulokset tallentuvat tiedostoon, joka on paikallisen koneen levyllä
 - Tallennus ei onnistu jos näytenumeroa ei ole annettu
-- Tyhjennä-painikkeella päänäytön voi tyhjentää tallentamatta
+- Tyhjennä-painikkeella päänäytön voi tyhjentää tallentamatta (tehty)
 
 ### Yleiset vaatimukset
 
-- Sovelluksen tulee toimia Linux- ja OSX-käyttöjärjestelmissä
+- Sovelluksen tulee toimia Linux- ja OSX-käyttöjärjestelmissä (tehty)
 - Käyttäjä kirjautuu ulos sulkemalla sovelluksen
 
 ## Jatkokehitysideat
 
 ### Päänäyttö
 
-- Epäselville veriryhmille kuvataan, missä reaktiossa/reaktioissa epäselvyys on
+- Epäselville veriryhmille kuvataan, missä reaktiossa/reaktioissa epäselvyys on (tehty)
 - Epäselville veriryhmille annetaan tarkempia jatkotutkimusehdotuksia epäselvyyden tyypin mukaan
 
 ### Historianäyttö

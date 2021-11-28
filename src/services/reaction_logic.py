@@ -1,27 +1,26 @@
-class Reaction_logic:
-    
+class ReactionLogic:
+
+    # Pylintin herjaukset muuttujista a, b ja d disabloitu, kun veriryhmät nyt vain sattuvat olemaan sen nimisiä.
+
     def __init__(self):
         self.acceptable_cell_reactions = [0, 3, 4, 5]
         self.acceptable_control_reactions = [0]
         self.acceptable_plasma_reactions = [0, 2, 3, 4]
 
-    def run_reaction_check(self, anti_a: int, anti_b: int, anti_d: int, control: int, a: int, b: int):
+    def run_reaction_check(self, anti_a: int, anti_b: int, anti_d: int, control: int, a: int, b: int):  # pylint: disable=invalid-name
         list_exceptions = []
-        reactions_ok = False
         if anti_a == -1 or anti_b == -1 or anti_d == -1 or control == -1 or a == -1 or b == -1:
-            print("Syötit virheellisen reaktiovoimakkuuden tai reaktiovoimakkuus puuttuu")
-            return reactions_ok
+            return "Syötit virheellisen reaktiovoimakkuuden tai reaktiovoimakkuus puuttuu"
         self.cell_reaction_logic(list_exceptions, anti_a, anti_b, anti_d)
         self.control_logic(list_exceptions, control)
         self.plasma_reaction_logic(list_exceptions, a, b)
         if len(list_exceptions) == 0:
-            reactions_ok = True
-            return reactions_ok
-        else:
-            print("Potilaan veriryhmä ei ole selvä. Havaitut ongelmat ovat")
-            for i in list_exceptions:
-                print(i)
-            return reactions_ok
+            return True
+        result = "Potilaan veriryhmä ei ole selvä. Havaitut ongelmat ovat \n"
+        for i in list_exceptions:
+            result = result + i + "\n"
+        result = result + "Tee jatkotutkimuksia. \n Anna potilaalle tarvittaessa O RhD neg punasoluja, RhD neg trombosyyttejä ja AB plasmaa."
+        return result
 
     def cell_reaction_logic(self, list_exceptions: list, anti_a: int, anti_b: int, anti_d: int):
         if anti_a == 5:
@@ -41,9 +40,8 @@ class Reaction_logic:
         if control not in self.acceptable_control_reactions:
             list_exceptions.append("- Kontrolli positiivinen")
 
-    def plasma_reaction_logic(self, list_exceptions: list, a:int, b: int):
+    def plasma_reaction_logic(self, list_exceptions: list, a: int, b: int):  # pylint: disable=invalid-name
         if a not in self.acceptable_plasma_reactions:
             list_exceptions.append("- Heikko anti-A-isoagglutiniini")
         if b not in self.acceptable_plasma_reactions:
             list_exceptions.append("- Heikko anti-B-isoagglutiniini")
-

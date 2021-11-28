@@ -12,6 +12,8 @@ Sovellus on tarkoitettu käytettäväksi Python-versiolla 3.8 tai korkeampi.
 
 [Työaikakirjanpito](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+[Arkkitehtuurikuvaus](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 ## Asennus ja komentorivikäskyt
 
 Asenna riippuvuudet komennolla
@@ -38,9 +40,14 @@ Pelkät testit voit ajaa komennolla
 poetry run invoke test
 ```
 
+Pylint-tarkistukset voit suorittaa komennolla
+```bash
+poetry run invoke lint
+```
+
 ## Mahdollisia testitapauksia
 
-Näytenumeroksi voit antaa minkä vain merkkijonon.
+Näytetunnisteeksi voit antaa minkä vain merkkijonon.
 
 Selvä veriryhmä A RhD neg: anti-A 4, anti-B 0, anti-D 0, control 0, A1-solu 0, B-solu 4
 

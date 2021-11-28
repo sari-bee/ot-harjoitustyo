@@ -1,16 +1,19 @@
 import unittest
 from entities.sample import Sample
 
+
 class TestSample(unittest.TestCase):
     def setUp(self):
         self.sample = Sample(123)
 
     def test_init_reactions_correct(self):
-        self.assertEqual(str(self.sample), "A -1, B -1, D -1, A1-solu: -1, B-solu: -1")
+        self.assertEqual(str(self.sample),
+                         "A -1, B -1, D -1, A1-solu: -1, B-solu: -1")
 
     def test_input_reactions_correct(self):
         self.sample.input_reactions("4", "0", "0", "0", "0", "4")
-        self.assertEqual(str(self.sample), "A 4, B 0, D 0, A1-solu: 0, B-solu: 4")
+        self.assertEqual(str(self.sample),
+                         "A 4, B 0, D 0, A1-solu: 0, B-solu: 4")
 
     def test_validate_correct_reaction(self):
         self.assertEqual(self.sample.validate_reaction("4"), 4)
@@ -39,4 +42,8 @@ class TestSample(unittest.TestCase):
         self.sample.a_cell = 0
         self.sample.b_cell = 4
         result = self.sample.run_checks()
-        self.assertEqual(result, "Tee jatkotutkimuksia. Anna potilaalle tarvittaessa O RhD neg punasoluja, RhD neg trombosyyttejä ja AB plasmaa.")
+        self.assertEqual(result, "Potilaan veriryhmä ei ole selvä. Havaitut ongelmat ovat \n- Heikko B-antigeeni\nTee jatkotutkimuksia. \n Anna potilaalle tarvittaessa O RhD neg punasoluja, RhD neg trombosyyttejä ja AB plasmaa.")
+
+    def test_adding_comment_works(self):
+        self.sample.input_comment("heippa")
+        self.assertEqual(self.sample.comment, "heippa")

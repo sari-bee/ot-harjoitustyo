@@ -8,4 +8,7 @@ Päivä | Tunnit | Tehtävä
 17.11. | 3 h | Veriryhmälogiikan koodausta ja ensimmäiset testit
 18.11. | 2 h | Veriryhmälogiikan parannusta ja testien täydennystä
 21.11. | 1 h | Readmen päivitys ja suoritettavan version tarkistus
-yht. | 13 h |
+22.11. | 2 h | Tutustumista tkinteriin ja graafisen käyttöliittymän aloitus
+24.11. | 3 h | Graafisen käyttöliittymän tekoa ja Samplehandler-luokka, pientä säätöä tulostuksiin ja testien tarkistus
+28.11. | 3 h | Lisää testejä, pylint käyttöön, arkkitehtuurikuvausta ja käyttöliittymän viilausta
+yht. | 21 h |
