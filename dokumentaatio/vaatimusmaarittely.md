@@ -39,7 +39,7 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 - Käyttäjän nimi tallentuu hänen syöttämiensä tapausten yhteyteen
 - Tallennusaika tallentuu tapauksen tallennuksen yhteydessä
 - Tallenna-painikkeella kaikki syötetyt tulokset tallentuvat tiedostoon, joka on paikallisen koneen levyllä
-- Tallennus ei onnistu jos näytenumeroa ei ole annettu
+- Tallennus ei onnistu jos näytenumeroa ei ole annettu (tehty)
 - Tyhjennä-painikkeella päänäytön voi tyhjentää tallentamatta (tehty)
 
 ### Yleiset vaatimukset
