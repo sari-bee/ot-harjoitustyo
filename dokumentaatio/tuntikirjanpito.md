@@ -9,6 +9,7 @@ Päivä | Tunnit | Tehtävä
 18.11. | 2 h | Veriryhmälogiikan parannusta ja testien täydennystä
 21.11. | 1 h | Readmen päivitys ja suoritettavan version tarkistus
 22.11. | 2 h | Tutustumista tkinteriin ja graafisen käyttöliittymän aloitus
-24.11. | 3 h | Graafisen käyttöliittymän tekoa ja Samplehandler-luokka, pientä säätöä tulostuksiin ja testien tarkistus
+24.11. | 3 h | Graafisen käyttöliittymän tekoa ja SampleHandler-luokka, pientä säätöä tulostuksiin ja testien tarkistus
 28.11. | 3 h | Lisää testejä, pylint käyttöön, arkkitehtuurikuvausta ja käyttöliittymän viilausta
-yht. | 21 h |
+29.11. | 2 h | SampleRepository-luokka ja sen käyttöönottoon liittyviä muutoksia
+yht. | 23 h |

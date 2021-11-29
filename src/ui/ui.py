@@ -14,17 +14,17 @@ class UI:
         self.input_anti_d = None
         self.input_control = None
         self.input_a1_cell = None
-        self.input_b1_cell = None
+        self.input_b_cell = None
         self.input_comment_box = None
         self.sample_handler = SampleHandler()
 
     def start(self):
         self.sample_id = StringVar()
-        self.sample_id.set("Näytetunniste: ")
+        self.sample_id.set("")
         self.result = StringVar()
-        self.result.set("Tulkinta: ")
+        self.result.set("")
         self.comment_box = StringVar()
-        self.comment_box.set("Kommentti: ")
+        self.comment_box.set("")
 
         welcome = ttk.Label(
             master=self.window, text="Tervetuloa veriryhmäapuriin", font="Helvetica 18 bold")
@@ -34,7 +34,7 @@ class UI:
         self.input_sample_id = ttk.Entry(master=self.window)
 
         give_results = ttk.Label(
-            master=self.window, text="Anna reaktiovoimakkuudet numeroilla 0-4 tai kaksoispopulaatio DP:")
+            master=self.window, text="Anna reaktiovoimakkuudet 0-4 tai kaksoispopulaatio DP:")
         give_anti_a = ttk.Label(master=self.window, text="Anti-A")
         give_anti_b = ttk.Label(master=self.window, text="Anti-B")
         give_anti_d = ttk.Label(master=self.window, text="Anti-D")
@@ -46,7 +46,7 @@ class UI:
         self.input_anti_d = ttk.Entry(master=self.window)
         self.input_control = ttk.Entry(master=self.window)
         self.input_a1_cell = ttk.Entry(master=self.window)
-        self.input_b1_cell = ttk.Entry(master=self.window)
+        self.input_b_cell = ttk.Entry(master=self.window)
 
         give_comment = ttk.Label(master=self.window, text="Lisää kommentti:")
         self.input_comment_box = ttk.Entry(master=self.window)
@@ -78,7 +78,7 @@ class UI:
         self.input_anti_d.grid(row=3, column=5, padx=5, pady=5)
         self.input_control.grid(row=4, column=1, padx=5, pady=5)
         self.input_a1_cell.grid(row=4, column=3, padx=5, pady=5)
-        self.input_b1_cell.grid(row=4, column=5, padx=5, pady=5)
+        self.input_b_cell.grid(row=4, column=5, padx=5, pady=5)
         give_comment.grid(row=5, column=0, columnspan=3, padx=5, pady=5)
         self.input_comment_box.grid(
             row=5, column=2, columnspan=3, padx=5, pady=5)
@@ -96,34 +96,54 @@ class UI:
         self.window.grid_columnconfigure(5, minsize=10)
 
     def check(self):
+        sample_id = None
+        comment = None
+        anti_a = None
+        anti_b = None
+        anti_d = None
+        control = None
+        a1_cell = None
+        b_cell = None
         sample_id = self.input_sample_id.get()
-        self.sample_handler.add_sample_id(sample_id)
-        getid = self.sample_handler.get_sample_id()
-        self.sample_id.set(f"Näytetunniste: {getid}")
+        comment = self.input_comment_box.get()
         anti_a = self.input_anti_a.get()
         anti_b = self.input_anti_b.get()
         anti_d = self.input_anti_d.get()
         control = self.input_control.get()
         a1_cell = self.input_a1_cell.get()
-        b_cell = self.input_b1_cell.get()
-        self.sample_handler.add_reactions(
-            anti_a, anti_b, anti_d, control, a1_cell, b_cell)
-        result = self.sample_handler.get_results()
-        self.result.set(f"Tulkinta: \n {result}")
-        comment = self.input_comment_box.get()
-        self.sample_handler.add_comment(comment)
-        getcomment = self.sample_handler.get_comment()
-        self.comment_box.set(f"Kommentti: \n {getcomment}")
+        b_cell = self.input_b_cell.get()
+        if len(sample_id) == 0:
+            self.sample_id.set("Näytetunniste on pakollinen tieto!")
+            self.result.set("")
+            self.comment_box.set("")
+        elif len(anti_a) == 0 or len(anti_b) == 0 or len(anti_d) == 0 or len(control) == 0 or len(a1_cell) == 0 or len(b_cell) == 0:
+            self.result.set("Jokin reaktiovoimakkuus puuttuu!")
+            self.sample_id.set("")
+            self.comment_box.set("")
+        else:
+            if len(comment) == 0:
+                comment = "-"
+            if not self.sample_handler.add_sample_data(
+                    sample_id, comment, anti_a, anti_b, anti_d, control, a1_cell, b_cell):
+                self.sample_id.set(
+                    "Syötit näytetunnisteen, joka on jo käytössä.")
+                self.result.set("")
+                self.comment_box.set("")
+            else:
+                result = self.sample_handler.get_results(sample_id)
+                self.sample_id.set(f"Näytetunniste: {sample_id}")
+                self.comment_box.set(f"Kommentti: \n {comment}")
+                self.result.set(f"Tulkinta: \n {result}")
 
     def delete(self):
         self.input_sample_id.delete(0, 'end')
-        self.sample_id.set("Näytetunniste: ")
+        self.sample_id.set("")
         self.input_anti_a.delete(0, 'end')
         self.input_anti_b.delete(0, 'end')
         self.input_anti_d.delete(0, 'end')
         self.input_control.delete(0, 'end')
         self.input_a1_cell.delete(0, 'end')
-        self.input_b1_cell.delete(0, 'end')
+        self.input_b_cell.delete(0, 'end')
         self.input_comment_box.delete(0, 'end')
-        self.result.set("Tulkinta: ")
-        self.comment_box.set("Kommentti: ")
+        self.result.set("")
+        self.comment_box.set("")

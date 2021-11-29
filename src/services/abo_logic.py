@@ -1,7 +1,5 @@
 class ABOLogic:
 
-    # Pylintin herjaukset muuttujista a, b ja d disabloitu, kun veriryhmät nyt vain sattuvat olemaan sen nimisiä.
-
     def __init__(self):
         self.positive_cell_reactions = [3, 4]
         self.negative_cell_reactions = [0]
@@ -10,13 +8,13 @@ class ABOLogic:
         self.positive_plasma_reactions = [2, 3, 4]
         self.negative_plasma_reactions = [0]
 
-    def run_abo_check(self, anti_a: int, anti_b: int, anti_d: int, a: int, b: int):  # pylint: disable=invalid-name
+    def run_abo_check(self, anti_a: int, anti_b: int, anti_d: int, a1_cell: int, b_cell: int):
         cell_abo = self.cell_reaction_abo(anti_a, anti_b)
-        d = self.cell_reaction_d(anti_d)  # pylint: disable=invalid-name
-        plasma_abo = self.plasma_reaction_abo(a, b)
+        cell_d = self.cell_reaction_d(anti_d)
+        plasma_abo = self.plasma_reaction_abo(a1_cell, b_cell)
         if cell_abo == plasma_abo:
-            return f"Potilaan veriryhmä on {cell_abo} RhD {d}"
-        return f"Potilaan RhD-veriryhmä on RhD {d}. \n Potilaan ABO-veriryhmä ei ole selvä. ABO on solupuolelta {cell_abo}, mutta plasmapuolelta {plasma_abo}. \n Tee jatkotutkimuksia ja anna potilaalle tarvittaessa O ryhmän punasoluja ja AB plasmaa."
+            return f"Potilaan veriryhmä on {cell_abo} RhD {cell_d}"
+        return f"Potilaan RhD-veriryhmä on RhD {cell_d}. \n Potilaan ABO-veriryhmä ei ole selvä. ABO on solupuolelta {cell_abo}, mutta plasmapuolelta {plasma_abo}. \n Tee jatkotutkimuksia ja anna potilaalle tarvittaessa O ryhmän punasoluja ja AB plasmaa."
 
     def cell_reaction_abo(self, anti_a: int, anti_b: int):
         if anti_a in self.positive_cell_reactions and anti_b in self.positive_cell_reactions:
@@ -36,13 +34,13 @@ class ABOLogic:
             return "neg"
         return "?"
 
-    def plasma_reaction_abo(self, a: int, b: int):  # pylint: disable=invalid-name
-        if a in self.positive_plasma_reactions and b in self.positive_plasma_reactions:
+    def plasma_reaction_abo(self, a1_cell: int, b_cell: int):
+        if a1_cell in self.positive_plasma_reactions and b_cell in self.positive_plasma_reactions:
             return "O"
-        if a in self.negative_plasma_reactions and b in self.positive_plasma_reactions:
+        if a1_cell in self.negative_plasma_reactions and b_cell in self.positive_plasma_reactions:
             return "A"
-        if a in self.positive_plasma_reactions and b in self.negative_plasma_reactions:
+        if a1_cell in self.positive_plasma_reactions and b_cell in self.negative_plasma_reactions:
             return "B"
-        if a in self.negative_plasma_reactions and b in self.negative_plasma_reactions:
+        if a1_cell in self.negative_plasma_reactions and b_cell in self.negative_plasma_reactions:
             return "AB"
         return "?"
