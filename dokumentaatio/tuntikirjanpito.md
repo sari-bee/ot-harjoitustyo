@@ -11,5 +11,5 @@ Päivä | Tunnit | Tehtävä
 22.11. | 2 h | Tutustumista tkinteriin ja graafisen käyttöliittymän aloitus
 24.11. | 3 h | Graafisen käyttöliittymän tekoa ja SampleHandler-luokka, pientä säätöä tulostuksiin ja testien tarkistus
 28.11. | 3 h | Lisää testejä, pylint käyttöön, arkkitehtuurikuvausta ja käyttöliittymän viilausta
-29.11. | 2 h | SampleRepository-luokka ja sen käyttöönottoon liittyviä muutoksia
+29.11. | 2 h | SampleRepository-luokka ja sen käyttöönottoon liittyviä muutoksia, testaus ja release
 yht. | 23 h |
