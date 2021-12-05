@@ -49,7 +49,7 @@ poetry run invoke lint
 
 ## Mahdollisia testitapauksia
 
-Näytetunnisteeksi voit antaa minkä vain uniikin (ei tällä käynnistyskerralla käytössä olleen) merkkijonon.
+Näytetunnisteeksi voit antaa minkä vain uniikin merkkijonon.
 
 Selvä veriryhmä A RhD neg: Anti-A 4, Anti-B 0, Anti-D 0, Kontrolli 0, A1-solu 0, B-solu 4
 

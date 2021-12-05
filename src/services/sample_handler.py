@@ -34,6 +34,13 @@ class SampleHandler:
             reaction_strength = int(reaction)
         return reaction_strength
 
+    def revert_reactions(self, reaction_strength: int):
+        if reaction_strength == 5:
+            reaction = "DP"
+        else:
+            reaction = str(reaction_strength)
+        return reaction
+
     def add_sample_data(self, sample_id: str, comment: str, anti_a: str, anti_b: str, anti_d: str, control: str, a1_cell: str, b1_cell: str):
         anti_a_reaction = self.convert_reactions(anti_a)
         anti_b_reaction = self.convert_reactions(anti_b)
@@ -57,8 +64,14 @@ class SampleHandler:
         for sample in samples[begin:end]:
             timeparts = sample.timestamp.split(".")
             time = timeparts[0]
+            anti_a = self.revert_reactions(sample.anti_a)
+            anti_b = self.revert_reactions(sample.anti_b)
+            anti_d = self.revert_reactions(sample.anti_d)
+            control = self.revert_reactions(sample.control)
+            a1_cell = self.revert_reactions(sample.a1_cell)
+            b_cell = self.revert_reactions(sample.b_cell)
             listing = listing + \
-                f"Näyte {sample.sample_id} (tallennettu {time}): Anti-A {sample.anti_a}, Anti-B {sample.anti_b}, Anti-D {sample.anti_d}, Kontrolli {sample.control}, A1-solu {sample.a1_cell}, B-solu {sample.b_cell}. \n Tulkinta: {self.get_results(sample.sample_id)} \n \n"
+                f"Näyte {sample.sample_id} (tallennettu {time}): Anti-A {anti_a}, Anti-B {anti_b}, Anti-D {anti_d}, Kontrolli {control}, A1-solu {a1_cell}, B-solu {b_cell}. \n Tulkinta: {self.get_results(sample.sample_id)} \n \n"
         return listing
 
     def get_number_of_samples(self):
@@ -71,7 +84,13 @@ class SampleHandler:
             return "Näytetunnisteella ei löydy näytettä"
         timeparts = sample.timestamp.split(".")
         time = timeparts[0]
-        sample_data = f"Näyte {sample.sample_id} (tallennettu {time}): Anti-A {sample.anti_a}, Anti-B {sample.anti_b}, Anti-D {sample.anti_d}, Kontrolli {sample.control}, A1-solu {sample.a1_cell}, B-solu {sample.b_cell}. \n Tulkinta: {self.get_results(sample.sample_id)}"
+        anti_a = self.revert_reactions(sample.anti_a)
+        anti_b = self.revert_reactions(sample.anti_b)
+        anti_d = self.revert_reactions(sample.anti_d)
+        control = self.revert_reactions(sample.control)
+        a1_cell = self.revert_reactions(sample.a1_cell)
+        b_cell = self.revert_reactions(sample.b_cell)
+        sample_data = f"Näyte {sample.sample_id} (tallennettu {time}): Anti-A {anti_a}, Anti-B {anti_b}, Anti-D {anti_d}, Kontrolli {control}, A1-solu {a1_cell}, B-solu {b_cell}. \n Tulkinta: {self.get_results(sample.sample_id)}"
         return sample_data
 
     def get_results(self, sample_id: str):

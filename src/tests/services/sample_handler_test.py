@@ -34,6 +34,10 @@ class TestSampleHandler(unittest.TestCase):
         reaction = self.sample_handler.convert_reactions("DP")
         self.assertEqual(reaction, 5)
 
+    def test_revert_reactions_works_with_DP(self):
+        reaction = self.sample_handler.revert_reactions(5)
+        self.assertEqual(reaction, "DP")
+
     def test_check_input_works_with_invalid_reactions_antiA(self):
         self.assertFalse(self.sample_handler.check_input(
             "6", "4", "0", "0", "0", "0"))
