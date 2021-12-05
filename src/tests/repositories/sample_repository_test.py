@@ -1,35 +1,47 @@
 import unittest
+import os
+from pathlib import Path
 from repositories.sample_repository import SampleRepository
 from entities.sample import Sample
 
 
 class TestSample(unittest.TestCase):
     def setUp(self):
-        self.sample_repository = SampleRepository()
+        dirname = os.path.dirname(__file__)
+        path = os.path.join(dirname, "test_samples.csv")
+        Path(path).touch()
+        with open(path, "w") as file:
+            file.write("")
+        self.sample_repository = SampleRepository(path)
 
-    def test_init_creates_empty_list(self):
-        self.assertTrue(len(self.sample_repository.samples) == 0)
-
-    def test_adding_several_samples_to_list_works(self):
-        sample = Sample("123", "hei", 4, 0, 0, 0, 0, 4)
+    def test_adding_several_samples_works(self):
+        sample = Sample("123", "hei",
+                        4, 0, 0, 0, 0, 4, "2021-12-04")
         self.sample_repository.add_sample(sample)
-        sample2 = Sample("456", "hei", 4, 0, 0, 0, 0, 4)
+        sample2 = Sample("456", "hei",
+                         4, 0, 0, 0, 0, 4, "2021-12-04")
         self.sample_repository.add_sample(sample2)
-        self.assertTrue(len(self.sample_repository.samples) == 2)
+        self.assertTrue(len(self.sample_repository.read()) == 2)
 
-    def test_adding_sample_to_list_fails_when_sample_is_duplicate(self):
-        sample = Sample("123", "hei", 4, 0, 0, 0, 0, 4)
+    def test_adding_sample_fails_when_sample_is_duplicate(self):
+        sample = Sample("123", "hei",
+                        4, 0, 0, 0, 0, 4, "2021-12-04")
         self.sample_repository.add_sample(sample)
-        sample2 = Sample("123", "hei", 4, 0, 0, 0, 0, 4)
+        sample2 = Sample("123", "hei",
+                         4, 0, 0, 0, 0, 4, "2021-12-04")
         self.assertFalse(self.sample_repository.add_sample(sample2))
 
     def test_get_sample_works(self):
-        sample = Sample("123", "hei", 4, 0, 0, 0, 0, 4)
+        sample = Sample("123", "hei",
+                        4, 0, 0, 0, 0, 4, "2021-12-04")
         self.sample_repository.add_sample(sample)
-        retrieved_sample = self.sample_repository.get_sample("123")
+        retrieved_sample = self.sample_repository.get_sample_by_id(
+            "123")
         self.assertEqual(retrieved_sample.comment, "hei")
 
     def test_get_sample_returns_none_when_sample_not_found(self):
-        sample = Sample("123", "hei", 4, 0, 0, 0, 0, 4)
+        sample = Sample("123", "hei",
+                        4, 0, 0, 0, 0, 4, "2021-12-04")
         self.sample_repository.add_sample(sample)
-        self.assertEqual(self.sample_repository.get_sample("456"), None)
+        self.assertEqual(self.sample_repository.get_sample_by_id(
+            "456"), None)

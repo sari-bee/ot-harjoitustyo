@@ -37,10 +37,10 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 - Käyttäjä voi syöttää näytenumeron, joka yksilöi näytteen (tehty)
 - Käyttäjä voi syöttää tuloksen yhteyteen kommentteja (tehty)
 - Käyttäjän nimi tallentuu hänen syöttämiensä tapausten yhteyteen
-- Tallennusaika tallentuu tapauksen tallennuksen yhteydessä
-- Tallenna-painikkeella kaikki syötetyt tulokset tallentuvat tiedostoon, joka on paikallisen koneen levyllä
-- Tallennus ei onnistu jos näytenumeroa ei ole annettu (tehty)
-- Tyhjennä-painikkeella päänäytön voi tyhjentää tallentamatta (tehty)
+- Tallennusaika tallentuu tapauksen tallennuksen yhteydessä (tehty vko 5)
+- Tallenna-painikkeella kaikki syötetyt tulokset tallentuvat tiedostoon, joka on paikallisen koneen levyllä (tehty vko 5)
+- Tallennus ei onnistu jos näytenumeroa ei ole annettu (tehty vko 5)
+- Tyhjennä-painikkeella päänäytön voi tyhjentää tallentamatta (tehty vko 5)
 
 ### Yleiset vaatimukset
 
@@ -56,8 +56,8 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 
 ### Historianäyttö
 
-- Historianäytössä käyttäjä voi selata kaikkia talletettuja tapauksia
-- Käyttäjä voi hakea aiempia tapauksia käyttäjänimen tai näytenumeron perusteella
+- Historianäytössä käyttäjä voi selata kaikkia talletettuja tapauksia (tehty vko 5)
+- Käyttäjä voi hakea aiempia tapauksia käyttäjänimen tai näytenumeron perusteella (osin tehty vko 5)
 
 ### Jatkotutkimusnäyttö
 

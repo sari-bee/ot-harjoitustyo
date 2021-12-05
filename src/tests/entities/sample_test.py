@@ -4,7 +4,8 @@ from entities.sample import Sample
 
 class TestSample(unittest.TestCase):
     def setUp(self):
-        self.sample = Sample("123", "hei", 4, 0, 0, 0, 0, 4)
+        self.sample = Sample("123", "hei",
+                             4, 0, 0, 0, 0, 4, "2021-12-04")
 
     def test_init_reaction_correct(self):
         self.assertEqual(self.sample.b_cell, 4)
@@ -20,6 +21,7 @@ class TestSample(unittest.TestCase):
         self.assertEqual(result, "Potilaan veriryhmä on A RhD neg")
 
     def test_run_checks_works_invalid_results(self):
-        sample = Sample("123", "hei", 4, 1, 4, 0, 0, 4)
+        sample = Sample("123", "hei",
+                        4, 1, 4, 0, 0, 4, "2021-12-04")
         result = sample.run_checks()
-        self.assertEqual(result, "Potilaan veriryhmä ei ole selvä. Havaitut ongelmat ovat \n- Heikko B-antigeeni\nTee jatkotutkimuksia. \n Anna potilaalle tarvittaessa O RhD neg punasoluja, RhD neg trombosyyttejä ja AB plasmaa.")
+        self.assertEqual(result, "Potilaan veriryhmä ei ole selvä. Havaitut ongelmat ovat: \n- Heikko B-antigeeni\nTee jatkotutkimuksia. Anna potilaalle O RhD neg punasoluja, RhD neg trombosyyttejä ja AB plasmaa.")

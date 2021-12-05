@@ -12,4 +12,7 @@ Päivä | Tunnit | Tehtävä
 24.11. | 3 h | Graafisen käyttöliittymän tekoa ja SampleHandler-luokka, pientä säätöä tulostuksiin ja testien tarkistus
 28.11. | 3 h | Lisää testejä, pylint käyttöön, arkkitehtuurikuvausta ja käyttöliittymän viilausta
 29.11. | 2 h | SampleRepository-luokka ja sen käyttöönottoon liittyviä muutoksia, testaus ja release
-yht. | 23 h |
+30.11. | 2 h | Tallennuslogiikkaan tutustuminen, historianäkymän aloitus
+4.12. | 3 h | Tallennuslogiikan rakennusta ja hakutoimintojen aloitus
+5.12. | 4 h | Hakutoiminnot, testien täydennystä, arkkitehtuurikuvaus, testaus ja release
+yht. | 32 h |

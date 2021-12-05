@@ -1,16 +1,18 @@
 import unittest
+import os
+from pathlib import Path
 from services.sample_handler import SampleHandler
 
 
 class TestSampleHandler(unittest.TestCase):
     def setUp(self):
         self.sample_handler = SampleHandler()
-
-    def test_get_sample_data_works(self):
-        self.sample_handler.add_sample_data(
-            "123", "hei", "4", "0", "0", "0", "0", "4")
-        data = self.sample_handler.get_sample_data("123")
-        self.assertEqual(data[1], "hei")
+        dirname = os.path.dirname(__file__)
+        path = os.path.join(dirname, "test_samples.csv")
+        Path(path).touch()
+        with open(path, "w") as file:
+            file.write("")
+        self.sample_handler.sample_repository.path = path
 
     def test_adding_sample_works(self):
         self.assertTrue(self.sample_handler.add_sample_data(
@@ -28,11 +30,61 @@ class TestSampleHandler(unittest.TestCase):
         self.assertEqual(self.sample_handler.get_results("123"),
                          "Potilaan veriryhmä on A RhD neg")
 
-    def test_validate_correct_reaction(self):
-        self.assertEqual(self.sample_handler.validate_reaction("4"), 4)
+    def test_convert_reactions_works_with_DP(self):
+        reaction = self.sample_handler.convert_reactions("DP")
+        self.assertEqual(reaction, 5)
 
-    def test_validate_DP_reaction(self):
-        self.assertEqual(self.sample_handler.validate_reaction("DP"), 5)
+    def test_check_input_works_with_invalid_reactions_antiA(self):
+        self.assertFalse(self.sample_handler.check_input(
+            "6", "4", "0", "0", "0", "0"))
 
-    def test_validate_invalid_reaction(self):
-        self.assertEqual(self.sample_handler.validate_reaction("8"), -1)
+    def test_check_input_works_with_invalid_reactions_antiB(self):
+        self.assertFalse(self.sample_handler.check_input(
+            "4", "8", "0", "0", "0", "0"))
+
+    def test_check_input_works_with_invalid_reactions_antiD(self):
+        self.assertFalse(self.sample_handler.check_input(
+            "4", "4", "hei", "0", "0", "0"))
+
+    def test_check_input_works_with_invalid_reactions_control(self):
+        self.assertFalse(self.sample_handler.check_input(
+            "4", "4", "0", "moi", "0", "0"))
+
+    def test_check_input_works_with_invalid_reactions_A1cell(self):
+        self.assertFalse(self.sample_handler.check_input(
+            "4", "4", "0", "0", "7", "0"))
+
+    def test_check_input_works_with_invalid_reactions_Bcell(self):
+        self.assertFalse(self.sample_handler.check_input(
+            "4", "4", "0", "0", "0", "7"))
+
+    def test_check_input_works_with_valid_reactions(self):
+        self.assertTrue(self.sample_handler.check_input(
+            "4", "4", "0", "0", "0", "0"))
+
+    def test_get_all_samples_works(self):
+        self.sample_handler.add_sample_data(
+            "123", "hei", "4", "0", "0", "0", "0", "4")
+        parts = self.sample_handler.get_all_samples(0).split("(")
+        self.assertEqual(parts[0], "Näyte 123 ")
+
+    def test_get_all_samples_works_with_empty_file(self):
+        self.assertEqual(self.sample_handler.get_all_samples(
+            0), "Ei tallennettuja näytteitä.")
+
+    def test_get_sample_by_id_works(self):
+        self.sample_handler.add_sample_data(
+            "123", "hei", "4", "0", "0", "0", "0", "4")
+        parts = self.sample_handler.get_sample_by_id("123").split("(")
+        self.assertEqual(parts[0], "Näyte 123 ")
+
+    def test_get_sample_by_id_when_id_not_found(self):
+        self.sample_handler.add_sample_data(
+            "123", "hei", "4", "0", "0", "0", "0", "4")
+        self.assertEqual(self.sample_handler.get_sample_by_id(
+            "456"), "Näytetunnisteella ei löydy näytettä")
+
+    def test_get_number_of_samples_works(self):
+        self.sample_handler.add_sample_data(
+            "123", "hei", "4", "0", "0", "0", "0", "4")
+        self.assertEqual(self.sample_handler.get_number_of_samples(), 1)
