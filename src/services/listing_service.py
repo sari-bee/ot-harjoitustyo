@@ -3,8 +3,19 @@ from entities.sample import Sample
 
 class ListingService:
 
+    """Luokka muodostaa listauksia muiden luokkien tarpeisiin. Luokasta ei muodosteta olioita.
+    """
+
     @classmethod
-    def revert_reactions(cls, reaction_strength: int):
+    def revert_reactions(cls, reaction_strength):
+        """Metodi muuntaa tulkinnassa käytetyt kokonaislukutyyppiset muuttujat merkkijonotyyppisiksi esittämistä varten
+
+        Args:
+            reaction_strength (int): reaktiovoimakkuus kokonaislukutyyppisenä
+
+        Returns:
+            Merkkijono: reaktiovoimakkuus
+        """
         if reaction_strength == 5:
             reaction = "DP"
         else:
@@ -12,7 +23,16 @@ class ListingService:
         return reaction
 
     @classmethod
-    def list_samples(cls, samples: list, sample_index: int):
+    def list_samples(cls, samples, sample_index):
+        """Tulostetaan listaus kaikista hakuehtoihin sopivista näytteistä
+
+        Args:
+            samples (list): Lista näyteolioita, jotka sopivat tiettyihin hakuehtoihin
+            sample_index (int): Indeksi, josta näytteiden listaus aloitetaan
+
+        Returns:
+            Merkkijono: Näytteiden tiedot merkkijonomuodossa
+        """
         listing = ""
         samples.sort(key=lambda sample: (sample.timestamp), reverse=True)
         begin = sample_index
@@ -31,7 +51,15 @@ class ListingService:
         return listing
 
     @classmethod
-    def get_one_sample(cls, sample: Sample):
+    def get_one_sample(cls, sample):
+        """Tulostetaan listaus yksittäisestä näytteestä
+
+        Args:
+            sample (Sample): Yksittäinen näyteolio
+
+        Returns:
+            Merkkijono: Näytteen tiedot merkkijonomuodossa
+        """
         timeparts = sample.timestamp.split(".")
         time = timeparts[0]
         anti_a = ListingService.revert_reactions(sample.anti_a)

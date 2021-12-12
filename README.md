@@ -16,6 +16,8 @@ Sovellus on tarkoitettu käytettäväksi Python-versiolla 3.8 tai korkeampi.
 
 [Arkkitehtuurikuvaus](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Käyttöohje](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
 ## Asennus ja komentorivikäskyt
 
 Asenna riippuvuudet komennolla

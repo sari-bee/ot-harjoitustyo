@@ -7,37 +7,88 @@ from services.listing_service import ListingService
 
 class SampleHandler:
 
+    """Luokka, joka hoitaa kaiken näytteisiin liittyvän logiikan käyttöliittymän kanssa.
+
+    Attributes:
+        sample_repository: Ohjelman käynnistyskertakohtainen näyterepository
+    """
+
     def __init__(self):
+        """Luokan konstruktori, joka luo käynnistyskertakohtaisen näytepalvelun
+        Attributes:
+            sample_repository: Ohjelman käynnistyskertakohtainen näyterepository
+
+        """
         dirname = os.path.dirname(__file__)
         self.sample_repository = SampleRepository(
             os.path.join(dirname, "../..", "data", "samples.csv"))
 
     @classmethod
-    def check_input(cls, anti_a: str, anti_b: str, anti_d: str, control: str, a1_cell: str, b_cell: str):
+    def check_input(cls, anti_a, anti_b, anti_d, control, a1_cell, b_cell):
+        """Metodi tarkistaa, ovatko annetut reaktiovoimakkuudet ohjelman hyväksymän muotoisia
+
+        Args:
+            anti_a (str): Anti-A-reaktiovoimakkuus
+            anti_b (str): Anti-B-reaktiovoimakkuus
+            anti_d (str): Anti-D-reaktiovoimakkuus
+            control (str): Kontrollin reaktiovoimakkuus
+            a1_cell (str): A1-solun reaktiovoimakkuus
+            b_cell (str): B-solun reaktiovoimakkuus
+
+        Returns:
+            True: jos kaikki reaktiovoimakkuudet ovat hyväksyttäviä
+            Merkkijono: listaus havaituista poikkeamista
+        """
         valid_reactions = ["0", "1", "2", "3", "4", "DP"]
+        problems = ""
         if anti_a not in valid_reactions:
-            return False
+            problems = problems + "- Anti-A \n"
         if anti_b not in valid_reactions:
-            return False
+            problems = problems + "- Anti-B \n"
         if anti_d not in valid_reactions:
-            return False
+            problems = problems + "- Anti-D \n"
         if control not in valid_reactions:
-            return False
+            problems = problems + "- Kontrolli \n"
         if a1_cell not in valid_reactions:
-            return False
+            problems = problems + "- A1-solu \n"
         if b_cell not in valid_reactions:
-            return False
-        return True
+            problems = problems + "- B-solu \n"
+        if problems == "":
+            return True
+        return problems
 
     @classmethod
-    def convert_reactions(cls, reaction: str):
+    def convert_reactions(cls, reaction):
+        """Metodi muuntaa merkkijonomuotoiset reaktiovoimakkuudet kokonaisluvuiksi tulkintaa varten
+
+        Args:
+            reaction (str): Reaktio merkkijonomuodossa
+
+        Returns:
+            reaction_strength (int): Reaktiovoimakkuus kokonaislukuna
+        """
         if reaction == "DP":
             reaction_strength = 5
         else:
             reaction_strength = int(reaction)
         return reaction_strength
 
-    def add_sample_data(self, sample_id: str, comment: str, anti_a: str, anti_b: str, anti_d: str, control: str, a1_cell: str, b1_cell: str):
+    def add_sample_data(self, sample_id, comment, anti_a, anti_b, anti_d, control, a1_cell, b1_cell):
+        """Lisää näyterepositoryyn uuden näyteolion
+
+        Args:
+            sample_id (str): Näytetunniste
+            comment (str): Näytekommentti
+            anti_a (str): Anti-A
+            anti_b (str): Anti-B
+            anti_d (str): Anti-D
+            control (str): Kontrolli
+            a1_cell (str): A1-solu
+            b1_cell (str): B-solu
+        Returns:
+            False: jos lisättävän näytteen näytetunniste löytyy jo tallennettujen näytteiden listalta
+            True: jos näytteen lisäys onnistui (eli näytetunniste oli uniikki)
+        """
         anti_a_reaction = SampleHandler.convert_reactions(anti_a)
         anti_b_reaction = SampleHandler.convert_reactions(anti_b)
         anti_d_reaction = SampleHandler.convert_reactions(anti_d)
@@ -49,23 +100,54 @@ class SampleHandler:
                         anti_d_reaction, control_reaction, a1cell_reaction, b1cell_reaction, timestamp)
         return self.sample_repository.add_sample(sample)
 
-    def get_all_samples(self, sample_index: int):
+    def get_all_samples(self, sample_index):
+        """Hakee kaikki talletetut näytteet ja kutsuu ListingServicen metodia näytelistauksen luomiseksi
+
+        Args:
+            sample_index (int): Indeksi, josta lähtien näytteet halutaan palauttaa
+
+        Returns:
+            Merkkijono: Listaus talletetuista näytteistä tai tieto, että näytteitä ei ole talletettu
+        """
         samples = self.sample_repository.read()
         if len(samples) == 0:
             return "Ei tallennettuja näytteitä."
         return ListingService.list_samples(samples, sample_index)
 
     def get_number_of_samples(self):
+        """Palauttaa talletettujen näytteiden määrän
+
+        Returns:
+            Kokonaisluku: näytteiden määrä
+        """
         samples = self.sample_repository.read()
         return len(samples)
 
-    def get_sample_by_id(self, sample_id: str):
+    def get_sample_by_id(self, sample_id):
+        """Palauttaa näytteen tiedot näytenumeron perusteella
+
+        Args:
+            sample_id (str): Näytetunniste
+
+        Returns:
+            Merkkijono: Näytteen tiedot merkkijonomuodossa tai tieto, että näytettä ei löydy
+        """
         sample = self.sample_repository.get_sample_by_id(sample_id)
         if sample is None:
             return "Näytetunnisteella ei löydy näytettä"
         return ListingService.get_one_sample(sample)
 
-    def get_samples_by_several_ids(self, sample_ids: list, sample_index: int):
+    def get_samples_by_several_ids(self, sample_ids, sample_index):
+        """Palauttaa näytteiden tietoja näytetunnistelistauksen perusteella
+
+        Args:
+            sample_ids (list): Lista niiden näytteiden tunnisteita, joiden tietoja halutaan tarkastella
+            sample_index (int): Indeksi, josta lähtien näytetietoja halutaan tarkastella
+
+        Returns:
+            Merkkijono: Näytteiden tiedot merkkijonomuodossa
+        """
+
         samples = self.sample_repository.read()
         wanted_samples = []
         for sample in samples:
@@ -73,6 +155,14 @@ class SampleHandler:
                 wanted_samples.append(sample)
         return ListingService.list_samples(wanted_samples, sample_index)
 
-    def get_results(self, sample_id: str):
+    def get_results(self, sample_id):
+        """Hakee näytteen tulkinnan näytetunnisteen perusteella
+
+        Args:
+            sample_id (str): Näytetunniste
+
+        Returns:
+            Merkkijono: Näytteen tulosten tulkinta
+        """
         sample = self.sample_repository.get_sample_by_id(sample_id)
         return sample.run_checks()

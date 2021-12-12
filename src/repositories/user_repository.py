@@ -4,10 +4,26 @@ from entities.user import User
 
 class UserRepository:
 
-    def __init__(self, path: str):
+    """Luokka, joka huolehtii käyttäjäolioiden tallentamisesta ja lukemisesta csv-tiedostoon.
+
+    Attributes:
+        path: Polku konekohtaiseen csv-tiedostoon.
+    """
+
+    def __init__(self, path):
+        """Luokan konstruktori, joka luo ohjelman käynnistyskertakohtaisen käyttäjärepositoryn.
+
+        Args:
+            path (str): Polku konekohtaiseen csv-tiedostoon.
+        """
         self.path = path
 
     def read(self):
+        """Metodi lukee talletettujen käyttäjien tiedot konekohtaisesta csv-tiedostosta ja muuntaa ne listaksi käyttäjäolioita.
+
+        Returns:
+            Lista: Tallennetut käyttäjäoliot
+        """
         users = []
         Path(self.path).touch()
         with open(self.path) as file:
@@ -29,6 +45,11 @@ class UserRepository:
         return users
 
     def write(self, users):
+        """Metodi tallentaa käyttäjäoliot konekohtaiseen csv-tiedostoon.
+
+        Args:
+            users (list): Lista käyttäjäolioita
+        """
         Path(self.path).touch()
         with open(self.path, "w") as file:
             for user in users:
@@ -38,7 +59,16 @@ class UserRepository:
                 row = row + "\n"
                 file.write(row)
 
-    def add_user(self, new_user: User):
+    def add_user(self, new_user):
+        """Lisää uuden käyttäjäolion tallennettujen käyttäjien tiedostoon. 
+
+        Args:
+            new_user (User): Käyttäjäolio
+
+        Returns:
+            False: jos lisättävän käyttäjän käyttäjätunnus löytyy jo tallennettujen käyttäjien listalta
+            True: jos käyttäjän lisäys onnistui (eli käyttäjätunnus oli uniikki)
+        """
         users = self.read()
         for user in users:
             if user.username == new_user.username:
@@ -47,14 +77,29 @@ class UserRepository:
         self.write(users)
         return True
 
-    def find_user(self, username: str):
+    def find_user(self, username):
+        """Noutaa käyttäjäolion käyttäjätunnuksen perusteella
+
+        Args:
+           username (str): Halutun käyttäjän käyttäjätunnus
+
+        Returns:
+            User: Haluttu käyttäjäolio
+            None: jos etsittävää käyttäjätunnusta ei löydy
+        """
         users = self.read()
         for user in users:
             if user.username == username:
                 return user
         return None
 
-    def add_sample(self, user: User, added_sample_id: str):
+    def add_sample(self, user: User, added_sample_id):
+        """Lisää näytetunnisteen käyttäjän näytetunnistelistaan
+
+        Args:
+            user (User): Käyttäjä, jolle näytetunniste lisätään
+            added_sample_id (str): Näytetunniste, joka halutaan lisätä käyttäjän listaan
+        """
         users = self.read()
         i = 0
         while i < len(users):
@@ -67,13 +112,27 @@ class UserRepository:
         self.write(users)
 
     def get_usernames(self):
+        """Hakee kaikki rekisteröidyt käyttäjät
+
+        Returns:
+            Lista: käyttäjätunnukset
+        """
         users = self.read()
         usernames = []
         for user in users:
             usernames.append(user.username)
         return usernames
 
-    def get_sample_ids_by_user(self, wanted_user: User):
+    def get_sample_ids_by_user(self, wanted_user):
+        """Hakee kaikki käyttäjälle tallennetut näytetunnisteet
+
+        Args:
+            wanted_user (User): Käyttäjä, jonka näytetunnisteet halutaan hakea
+
+        Returns:
+            Lista: lista käyttäjän tallentamien näytteiden näytetunnisteista
+            None: jos käyttäjää ei löydy (tosin tällaista tilannetta ei pitäisi koskaan tulla)
+        """
         users = self.read()
         for user in users:
             if user.username == wanted_user.username:

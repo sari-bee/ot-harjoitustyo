@@ -24,9 +24,9 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 
 ### Alkunäyttö
 
-- Käyttäjä voi tunnistautua valikosta löytyvän käyttäjänimen perusteella
-- Jos käyttäjää ei löydy valikosta, käyttäjänimen voi lisätä painikkeesta
-- Käyttäjänimen tulee olla uniikki
+- Käyttäjä voi tunnistautua valikosta löytyvän käyttäjänimen perusteella (tehty vko 6, tosin toteutettu hieman eri tavalla)
+- Jos käyttäjää ei löydy valikosta, käyttäjänimen voi lisätä painikkeesta (tehty vko 6)
+- Käyttäjänimen tulee olla uniikki (tehty vko 6)
 
 ### Päänäyttö
 
@@ -37,15 +37,15 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 - Käyttäjä voi syöttää näytenumeron, joka yksilöi näytteen (tehty)
 - Käyttäjä voi syöttää tuloksen yhteyteen kommentteja (tehty)
 - Käyttäjän nimi tallentuu hänen syöttämiensä tapausten yhteyteen
-- Tallennusaika tallentuu tapauksen tallennuksen yhteydessä (tehty vko 5)
-- Tallenna-painikkeella kaikki syötetyt tulokset tallentuvat tiedostoon, joka on paikallisen koneen levyllä (tehty vko 5)
-- Tallennus ei onnistu jos näytenumeroa ei ole annettu (tehty vko 5)
-- Tyhjennä-painikkeella päänäytön voi tyhjentää tallentamatta (tehty vko 5)
+- Tallennusaika tallentuu tapauksen tallennuksen yhteydessä (tehty)
+- Tallenna-painikkeella kaikki syötetyt tulokset tallentuvat tiedostoon, joka on paikallisen koneen levyllä (tehty)
+- Tallennus ei onnistu jos näytenumeroa ei ole annettu (tehty)
+- Tyhjennä-painikkeella päänäytön voi tyhjentää tallentamatta (tehty)
 
 ### Yleiset vaatimukset
 
 - Sovelluksen tulee toimia Linux- ja OSX-käyttöjärjestelmissä (tehty)
-- Käyttäjä kirjautuu ulos sulkemalla sovelluksen
+- Käyttäjä kirjautuu ulos sulkemalla sovelluksen (tehty vko 6)
 
 ## Jatkokehitysideat
 
@@ -56,8 +56,8 @@ Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainitt
 
 ### Historianäyttö
 
-- Historianäytössä käyttäjä voi selata kaikkia talletettuja tapauksia (tehty vko 5)
-- Käyttäjä voi hakea aiempia tapauksia käyttäjänimen tai näytenumeron perusteella (osin tehty vko 5)
+- Historianäytössä käyttäjä voi selata kaikkia talletettuja tapauksia (tehty)
+- Käyttäjä voi hakea aiempia tapauksia käyttäjänimen tai näytenumeron perusteella (tehty vko 6)
 
 ### Jatkotutkimusnäyttö
 

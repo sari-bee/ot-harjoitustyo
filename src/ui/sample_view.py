@@ -130,11 +130,7 @@ class SampleView:
             self.__result.set("Jokin reaktiovoimakkuus puuttuu!")
             self.__sample_id.set("")
             self.__comment_box.set("")
-        elif not SampleHandler.check_input(anti_a, anti_b, anti_d, control, a1_cell, b_cell):
-            self.__result.set("Syötit virheellisen reaktiovoimakkuuden")
-            self.__sample_id.set("")
-            self.__comment_box.set("")
-        else:
+        elif SampleHandler.check_input(anti_a, anti_b, anti_d, control, a1_cell, b_cell) is True:
             if len(comment) == 0:
                 comment = "-"
             if not self.__sample_handler.add_sample_data(
@@ -149,6 +145,13 @@ class SampleView:
                 self.__sample_id.set(f"Näytetunniste: {sample_id}")
                 self.__comment_box.set(f"Kommentti: \n {comment}")
                 self.__result.set(f"Tulkinta: \n {result}")
+        else:
+            problem = SampleHandler.check_input(
+                anti_a, anti_b, anti_d, control, a1_cell, b_cell)
+            self.__result.set(
+                f"Syötit virheellisen reaktiovoimakkuuden seuraavissa kentissä:\n{problem}")
+            self.__sample_id.set("")
+            self.__comment_box.set("")
 
     def delete(self):
         self.__input_sample_id.delete(0, 'end')

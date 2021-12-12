@@ -36,28 +36,28 @@ class TestSampleHandler(unittest.TestCase):
         self.assertEqual(reaction, 5)
 
     def test_check_input_works_with_invalid_reactions_antiA(self):
-        self.assertFalse(SampleHandler.check_input(
-            "6", "4", "0", "0", "0", "0"))
+        self.assertEqual(SampleHandler.check_input(
+            "6", "4", "0", "0", "0", "0"), "- Anti-A \n")
 
     def test_check_input_works_with_invalid_reactions_antiB(self):
-        self.assertFalse(SampleHandler.check_input(
-            "4", "8", "0", "0", "0", "0"))
+        self.assertEqual(SampleHandler.check_input(
+            "4", "8", "0", "0", "0", "0"), "- Anti-B \n")
 
     def test_check_input_works_with_invalid_reactions_antiD(self):
-        self.assertFalse(SampleHandler.check_input(
-            "4", "4", "hei", "0", "0", "0"))
+        self.assertEqual(SampleHandler.check_input(
+            "4", "4", "hei", "0", "0", "0"), "- Anti-D \n")
 
     def test_check_input_works_with_invalid_reactions_control(self):
-        self.assertFalse(SampleHandler.check_input(
-            "4", "4", "0", "moi", "0", "0"))
+        self.assertEqual(SampleHandler.check_input(
+            "4", "4", "0", "moi", "0", "0"), "- Kontrolli \n")
 
     def test_check_input_works_with_invalid_reactions_A1cell(self):
-        self.assertFalse(SampleHandler.check_input(
-            "4", "4", "0", "0", "7", "0"))
+        self.assertEqual(SampleHandler.check_input(
+            "4", "4", "0", "0", "7", "0"), "- A1-solu \n")
 
     def test_check_input_works_with_invalid_reactions_Bcell(self):
-        self.assertFalse(SampleHandler.check_input(
-            "4", "4", "0", "0", "0", "7"))
+        self.assertEqual(SampleHandler.check_input(
+            "4", "4", "0", "0", "0", "7"), "- B-solu \n")
 
     def test_check_input_works_with_valid_reactions(self):
         self.assertTrue(SampleHandler.check_input(

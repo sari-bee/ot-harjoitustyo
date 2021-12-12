@@ -20,14 +20,14 @@ class UI:
             self.__window, self.to_sample_view, self.__user_handler)
         self.__current_view.grid()
 
-    def to_sample_view(self, user: User):
+    def to_sample_view(self, user):
         sample_view_window = Toplevel(self.__window)
         sample_view_window.title("Veriryhmäapuri")
         self.__current_view = SampleView(
             sample_view_window, self.to_history, self.__sample_handler, self.__user_handler, user)
         self.__current_view.grid()
 
-    def to_history(self, user: User):
+    def to_history(self, user):
         history_window = Toplevel(self.__window)
         history_window.title("Näytehistoria")
         self.__current_view = HistoryView(
