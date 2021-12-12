@@ -15,4 +15,6 @@ Päivä | Tunnit | Tehtävä
 30.11. | 2 h | Tallennuslogiikkaan tutustuminen, historianäkymän aloitus
 4.12. | 3 h | Tallennuslogiikan rakennusta ja hakutoimintojen aloitus
 5.12. | 4 h | Hakutoiminnot, testien täydennystä, arkkitehtuurikuvaus, testaus ja release
-yht. | 32 h |
+6.12. | 4 h | Käyttäjään liittyvät luokat ja refaktorointia
+8.12. | 3 h | Ulkoasun hienosäätöä, refaktorointia ja yksikkötestien kirjoitusta
+yht. | 39 h |

@@ -5,10 +5,10 @@ from repositories.sample_repository import SampleRepository
 from entities.sample import Sample
 
 
-class TestSample(unittest.TestCase):
+class TestSampleRepository(unittest.TestCase):
     def setUp(self):
         dirname = os.path.dirname(__file__)
-        path = os.path.join(dirname, "test_samples.csv")
+        path = os.path.join(dirname, "..", "test_samples.csv")
         Path(path).touch()
         with open(path, "w") as file:
             file.write("")

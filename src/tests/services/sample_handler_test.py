@@ -2,16 +2,17 @@ import unittest
 import os
 from pathlib import Path
 from services.sample_handler import SampleHandler
+from services.listing_service import ListingService
 
 
 class TestSampleHandler(unittest.TestCase):
     def setUp(self):
-        self.sample_handler = SampleHandler()
         dirname = os.path.dirname(__file__)
-        path = os.path.join(dirname, "test_samples.csv")
+        path = os.path.join(dirname, "..", "test_samples.csv")
         Path(path).touch()
         with open(path, "w") as file:
             file.write("")
+        self.sample_handler = SampleHandler()
         self.sample_handler.sample_repository.path = path
 
     def test_adding_sample_works(self):
@@ -31,39 +32,35 @@ class TestSampleHandler(unittest.TestCase):
                          "Potilaan veriryhmä on A RhD neg")
 
     def test_convert_reactions_works_with_DP(self):
-        reaction = self.sample_handler.convert_reactions("DP")
+        reaction = SampleHandler.convert_reactions("DP")
         self.assertEqual(reaction, 5)
 
-    def test_revert_reactions_works_with_DP(self):
-        reaction = self.sample_handler.revert_reactions(5)
-        self.assertEqual(reaction, "DP")
-
     def test_check_input_works_with_invalid_reactions_antiA(self):
-        self.assertFalse(self.sample_handler.check_input(
+        self.assertFalse(SampleHandler.check_input(
             "6", "4", "0", "0", "0", "0"))
 
     def test_check_input_works_with_invalid_reactions_antiB(self):
-        self.assertFalse(self.sample_handler.check_input(
+        self.assertFalse(SampleHandler.check_input(
             "4", "8", "0", "0", "0", "0"))
 
     def test_check_input_works_with_invalid_reactions_antiD(self):
-        self.assertFalse(self.sample_handler.check_input(
+        self.assertFalse(SampleHandler.check_input(
             "4", "4", "hei", "0", "0", "0"))
 
     def test_check_input_works_with_invalid_reactions_control(self):
-        self.assertFalse(self.sample_handler.check_input(
+        self.assertFalse(SampleHandler.check_input(
             "4", "4", "0", "moi", "0", "0"))
 
     def test_check_input_works_with_invalid_reactions_A1cell(self):
-        self.assertFalse(self.sample_handler.check_input(
+        self.assertFalse(SampleHandler.check_input(
             "4", "4", "0", "0", "7", "0"))
 
     def test_check_input_works_with_invalid_reactions_Bcell(self):
-        self.assertFalse(self.sample_handler.check_input(
+        self.assertFalse(SampleHandler.check_input(
             "4", "4", "0", "0", "0", "7"))
 
     def test_check_input_works_with_valid_reactions(self):
-        self.assertTrue(self.sample_handler.check_input(
+        self.assertTrue(SampleHandler.check_input(
             "4", "4", "0", "0", "0", "0"))
 
     def test_get_all_samples_works(self):

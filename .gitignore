@@ -20,6 +20,7 @@
 /src/tests/entities/__pycache__/
 /src/ui/__pycache__/
 /src/tests/repositories/__pycache__/
-/src/tests/services/test_samples.csv
-/src/tests/repositories/test_samples.csv
+/src/tests/test_samples.csv
+/src/tests/test_users.csv
 /data/samples.csv
+/data/users.csv
