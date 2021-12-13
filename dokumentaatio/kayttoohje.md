@@ -3,14 +3,14 @@
 ## Sovelluksen käynnistäminen
 
 Asenna riippuvuudet komennolla
-´´´bash
+```bash
 poetry install
-´´´
+```
 
 Ja käynnistä sovellus komennolla
-´´´bash
+```bash
 poetry run invoke start
-´´´
+
 
 ## Kirjautuminen
 
