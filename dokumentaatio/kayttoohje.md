@@ -10,7 +10,7 @@ poetry install
 Ja käynnistä sovellus komennolla
 ```bash
 poetry run invoke start
-
+```
 
 ## Kirjautuminen
 
