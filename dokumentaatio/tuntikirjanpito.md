@@ -18,4 +18,5 @@ Päivä | Tunnit | Tehtävä
 6.12. | 4 h | Käyttäjään liittyvät luokat ja refaktorointia
 8.12. | 3 h | Ulkoasun hienosäätöä, refaktorointia ja yksikkötestien kirjoitusta
 12.12. | 3 h | Testausta, docstring-dokumentaatio, arkkitehtuurikuvaus ja käyttöohje
-yht. | 42 h |
+13.12. | 2 h | Käyttöohjeen ja arkkitehtuurikuvauksen täydennys, release
+yht. | 44 h |

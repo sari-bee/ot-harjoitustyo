@@ -16,7 +16,7 @@ Sovellus koostuu neljästä eri näkymästä:
 - Jatkotutkimusnäyttö, johon käyttäjä voi syöttää suositeltujen jatkotutkimusten tuloksia
 - Historianäyttö, jossa historiatietoja voi hakea ja selata
 
-![Käyttöliittymäluonnos](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/UI.jpg)
+![Käyttöliittymäluonnos](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/UI.jpg)
 
 Esitetty käyttöliittymäluonnos sisältää myös jatkokehitysideoissa mainittuja toiminnallisuuksia.
 
