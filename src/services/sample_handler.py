@@ -14,10 +14,7 @@ class SampleHandler:
     """
 
     def __init__(self):
-        """Luokan konstruktori, joka luo käynnistyskertakohtaisen näytepalvelun
-        Attributes:
-            sample_repository: Ohjelman käynnistyskertakohtainen näyterepository
-
+        """Luokan konstruktori, joka luo käynnistyskertakohtaisen näytepalvelun ja näyterepositoryn
         """
         dirname = os.path.dirname(__file__)
         self.sample_repository = SampleRepository(

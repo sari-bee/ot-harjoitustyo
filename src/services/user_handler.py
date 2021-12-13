@@ -12,10 +12,7 @@ class UserHandler:
     """
 
     def __init__(self):
-        """Luokan konstruktori, joka luo käynnistyskertakohtaisen käyttäjäpalvelun
-        Attributes:
-            sample_repository: Ohjelman käynnistyskertakohtainen käyttäjärepository
-
+        """Luokan konstruktori, joka luo käynnistyskertakohtaisen käyttäjäpalvelun jh käyttäjärepositoryn
         """
         dirname = os.path.dirname(__file__)
         self.user_repository = UserRepository(
