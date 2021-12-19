@@ -1,6 +1,6 @@
-# Ohjelmistotekniikan harjoitustyö: Veriryhmäapuri
+# Veriryhmäapuri
 
-Sovelluksen tarkoituksena on toimia tukena veriryhmämäärityksen tulkinnassa, jatkotutkimusten tarpeen arvioinnissa ja potilaan verivalmisteiden valinnassa. Käyttäjä syöttää sovellukseen veriryhmämäärityksen raakatulokset ja saa tulkinnan tuloksille.
+Sovelluksen tarkoituksena on toimia tukena veriryhmämäärityksen tulkinnassa, jatkotutkimusten tarpeen arvioinnissa ja potilaan verivalmisteiden valinnassa. Käyttäjä syöttää sovellukseen veriryhmämäärityksen raakatulokset ja saa tulkinnan tuloksille. Syötetyt näytteet tallentuvat tiedostoon, josta niitä voi käyttää esimerkiksi opetustarkoituksiin.
 
 [Release](https://github.com/sari-bee/ot-harjoitustyo/releases)
 
@@ -10,15 +10,17 @@ Sovellus on tarkoitettu käytettäväksi Python-versiolla 3.8 tai korkeampi.
 
 ## Dokumentaatio
 
-[Vaatimusmäärittely](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+[Käyttöohje](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
-[Työaikakirjanpito](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+[Vaatimusmäärittely](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Arkkitehtuurikuvaus](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
-[Käyttöohje](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+[Testausraportti](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/testausraportti.md)
 
-## Asennus ja komentorivikäskyt
+[Työaikakirjanpito](https://github.com/sari-bee/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+
+## Asennus ja käynnistys
 
 Asenna riippuvuudet komennolla
 
@@ -32,24 +34,29 @@ Käynnistä sovellus komennolla
 poetry run invoke start
 ```
 
-Aja testit ja tuota testikattavuusraportti komennolla
+## Komentorivitoiminnot
 
-```bash
-poetry run invoke coverage-report
-```
-
-Pelkät testit voit ajaa komennolla
+Aja testit:
 
 ```bash
 poetry run invoke test
 ```
 
-Pylint-tarkistukset voit suorittaa komennolla
+Aja testit ja tuota testikattavuusraportti:
+
+```bash
+poetry run invoke coverage-report
+```
+
+Suorita Pylint-tarkistukset:
+
 ```bash
 poetry run invoke lint
 ```
 
 ## Mahdollisia testitapauksia
+
+Testitapausten tulkinta olettaa, ettei konfiguraatiotiedostossa ole tehty muutoksia hyväksyttäviin reaktiovoimakkuuksiin.
 
 Näytetunnisteeksi voit antaa minkä vain uniikin merkkijonon.
 

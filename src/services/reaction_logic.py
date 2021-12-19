@@ -1,11 +1,17 @@
+from services.transfusion_directions import TransfusionDirections
+from config import POS_ABO_CELL_REACTIONS, POS_ABO_PLASMA_REACTIONS, POS_D_CELL_REACTIONS
+
+
 class ReactionLogic:
 
-    """Luokan metodit tarkistavat, ovatko näytteen yksittäiset reaktiot valideja veriryhmän tulkintaan. Luokasta ei muodosteta olioita.
+    """
+    Luokan metodit tarkistavat, ovatko näytteen reaktiot sopivia veriryhmän tulkintaan
+    vai onko jo yksittäisessä reaktiossa jotakin, mikä tekee veriryhmästä epäselvän.
     """
 
     @classmethod
     def run_reaction_check(cls, anti_a, anti_b, anti_d, control, a1_cell, b_cell):
-        """Metodi, joka kutsuu yksittäisten reaktioiden tarkistusmetodeja ja koostaa listan havaituista poikkeamista
+        """Metodi, joka koostaa listan havaituista poikkeamista
 
         Args:
             anti_a (int): Anti-A-reaktiovoimakkuus
@@ -19,22 +25,27 @@ class ReactionLogic:
             Merkkijono: Listaus havaituista poikkeamista
             True: Jos poikkeamalista on tyhjä (eli jos poikkeamia ei havaittu)
         """
+
         list_exceptions = []
         ReactionLogic.cell_reaction_logic(
             list_exceptions, anti_a, anti_b, anti_d)
         ReactionLogic.control_logic(list_exceptions, control)
         ReactionLogic.plasma_reaction_logic(list_exceptions, a1_cell, b_cell)
+
         if len(list_exceptions) == 0:
             return True
-        result = "Potilaan veriryhmä ei ole selvä. Havaitut ongelmat ovat: \n"
+
+        result = "Potilaan veriryhmä ei ole selvä. Havaitut ongelmat ovat:\n"
         for i in list_exceptions:
             result = result + i + "\n"
-        result = result + "Tee jatkotutkimuksia. Anna potilaalle O RhD neg punasoluja, RhD neg trombosyyttejä ja AB plasmaa."
+
+        result = result + TransfusionDirections.abo_unclear("?")
         return result
 
     @classmethod
     def cell_reaction_logic(cls, list_exceptions, anti_a, anti_b, anti_d):
-        """Tarkistaa solupuolen reaktioiden reaktiovoimakkuudet eli ovatko ne sopivat veriryhmän tulkintaan
+        """Tarkistaa ovatko solupuolen reaktioiden reaktiovoimakkuudet sopivat veriryhmän tulkintaan
+        eli onko jo yksittäisessä reaktiossa jotakin, mikä tekee veriryhmästä epäselvän.
 
         Args:
             list_exceptions (list): Lista, johon kerätään mahdolliset poikkeamat
@@ -42,45 +53,59 @@ class ReactionLogic:
             anti_b (int): Anti-B:n reaktiovoimakkuus
             anti_d (int): Anti-D:n reaktiovoimakkuus
         """
-        acceptable_cell_reactions = [0, 3, 4, 5]
+
+        acceptable_abo_cell_reactions = [
+            int(reaction) for reaction in POS_ABO_CELL_REACTIONS]
+        acceptable_abo_cell_reactions.append(0)
+
         if anti_a == 5:
             list_exceptions.append(
                 "- Kaksoispopulaatio A-antigeenilla; tarkista verensiirrot!")
-        if anti_a not in acceptable_cell_reactions:
+        elif anti_a not in acceptable_abo_cell_reactions:
             list_exceptions.append("- Heikko A-antigeeni")
         if anti_b == 5:
             list_exceptions.append(
                 "- Kaksoispopulaatio B-antigeenilla; tarkista verensiirrot!")
-        if anti_b not in acceptable_cell_reactions:
+        elif anti_b not in acceptable_abo_cell_reactions:
             list_exceptions.append("- Heikko B-antigeeni")
+
+        acceptable_d_reactions = [int(reaction)
+                                  for reaction in POS_D_CELL_REACTIONS]
+        acceptable_d_reactions.append(0)
+
         if anti_d == 5:
             list_exceptions.append(
                 "- Kaksoispopulaatio D-antigeenilla; tarkista verensiirrot!")
-        if anti_d not in acceptable_cell_reactions:
+        elif anti_d not in acceptable_d_reactions:
             list_exceptions.append("- Heikko D-antigeeni")
 
     @classmethod
     def control_logic(cls, list_exceptions, control):
-        """Tarkistaa kontrollin reaktiovoimakkuuden eli voiko veriryhmän tulkita
+        """Tarkistaa että kontrolli on negatiivinen eli että veriryhmän voi tulkita
 
         Args:
             list_exceptions (list): Lista, johon kerätään mahdolliset poikkeamat
             control (int): Kontrollin reaktiovoimakkuus
         """
-        acceptable_control_reactions = [0]
-        if control not in acceptable_control_reactions:
+
+        if control != 0:
             list_exceptions.append("- Kontrolli positiivinen")
 
     @classmethod
     def plasma_reaction_logic(cls, list_exceptions, a1_cell, b_cell):
-        """Tarkistaa plasmapuolen reaktioiden reaktiovoimakkuudet eli ovatko ne sopivat veriryhmän tulkintaan
+        """Tarkistaa ovat plasmapuolen reaktioiden reaktiovoimakkuudet sopivat veriryhmän tulkintaan
+        eli onko jo yksittäisessä reaktiossa jotakin, mikä tekee veriryhmästä epäselvän.
 
         Args:
             list_exceptions (list): Lista, johon kerätään mahdolliset poikkeamat
             a1_cell (int): A1-solun reaktiovoimakkuus
             b_cell (int): B-solun reaktiovoimakkuus
         """
-        acceptable_plasma_reactions = [0, 2, 3, 4]
+
+        acceptable_plasma_reactions = [
+            int(reaction) for reaction in POS_ABO_PLASMA_REACTIONS]
+        acceptable_plasma_reactions.append(0)
+
         if a1_cell not in acceptable_plasma_reactions:
             list_exceptions.append(
                 "- Heikko anti-A-isoagglutiniini tai ylimääräinen reaktio A1-solulla")

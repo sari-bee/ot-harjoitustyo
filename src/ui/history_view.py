@@ -2,7 +2,19 @@ from tkinter import ttk, StringVar
 
 
 class HistoryView:
+    """Luokka luo historianäkymän, jossa voi hakea aiempia näytteitä.
+    """
+
     def __init__(self, window, sample_handler, user_handler, user):
+        """Luokan konstruktori, joka luo näkymän.
+
+        Args:
+            window (window): ikkuna, johon näkymä luodaan
+            sample_handler (SampleHandler): käynnistyskerran näyteservice
+            user_handler ([UserHandler): käynnistyskerran käyttäjäservice
+            user (User): käynnistyskerran sisäänkirjautunutkäyttäjä
+        """
+
         self.__window = window
         self.__frame = None
         self.__sample_handler = sample_handler
@@ -20,6 +32,7 @@ class HistoryView:
 
     def initialize(self):
         self.__frame = ttk.Frame(master=self.__window)
+
         self.__search_results = StringVar()
         self.__search_results.set("")
 
@@ -48,29 +61,52 @@ class HistoryView:
         self.__later_button.grid(row=2, column=8, columnspan=3, padx=5, pady=5)
 
     def click_sample_history(self):
+        """
+        Käyttäjä haluaa hakea kaikki talletetut näytteet.
+        Asettaa näyteindeksin nollaksi ja käynnistää oikean haun.
+        """
+
         self.__sample_index = 0
         self.__search = 1
         self.get_sample_history(self.__sample_index)
 
     def click_user_history(self):
+        """
+        Käyttäjä haluaa hakea tallettamansa näytteet.
+        Asettaa näyteindeksin nollaksi ja käynnistää oikean haun.
+        """
+
         self.__sample_index = 0
         self.__search = 2
         self.get_user_history(self.__sample_index)
 
     def get_sample_history(self, index):
+        """Hakee kaikki talletetut näytteet.
+
+        Args:
+            index (int): näytelistauksen indeksi, josta listaus esitetään
+        """
+
         if self.__sample_index < 4:
             self.__later_button.config(state="disabled")
         else:
             self.__later_button.config(state="enabled")
         number = self.__sample_handler.get_number_of_samples()
-        if self.__sample_index > (number - 5):
+        if self.__sample_index > (number - 6):  # 5
             self.__earlier_button.config(state="disabled")
         else:
             self.__earlier_button.config(state="enabled")
+
         self.__search_results.set(
             self.__sample_handler.get_all_samples(index))
 
     def get_user_history(self, index):
+        """Hakee käyttäjän tallettamat näytteet.
+
+        Args:
+            index (int): näytelistauksen indeksi, josta listaus esitetään
+        """
+
         if self.__sample_index < 4:
             self.__later_button.config(state="disabled")
         else:
@@ -80,6 +116,7 @@ class HistoryView:
             self.__earlier_button.config(state="disabled")
         else:
             self.__earlier_button.config(state="enabled")
+
         sample_ids = self.__user_handler.get_samples_by_user(self.__user)
         if len(sample_ids) == 0:
             self.__search_results.set(
@@ -89,6 +126,9 @@ class HistoryView:
                 self.__sample_handler.get_samples_by_several_ids(sample_ids, index))
 
     def get_later(self):
+        """Hakee näytteiden selauksessa pienemmän indeksin (myöhemmät näytteet).
+        """
+
         if self.__search == 0:
             self.__search_results.set("Valitse ensin haku")
         else:
@@ -100,6 +140,9 @@ class HistoryView:
                 self.get_sample_history(self.__sample_index)
 
     def get_earlier(self):
+        """Hakee näytteiden selauksessa isomman indeksin (aiemmat näytteet).
+        """
+
         if self.__search == 0:
             self.__search_results.set("Valitse ensin haku")
         else:
@@ -115,6 +158,9 @@ class HistoryView:
                 self.get_sample_history(self.__sample_index)
 
     def search_by_id(self):
+        """Hakee käyttäjän syöttämän näytetunnisteen.
+        """
+
         self.__search = 0
         sample_id = None
         sample_id = self.__input_sample_id.get()

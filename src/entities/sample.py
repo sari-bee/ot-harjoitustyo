@@ -18,7 +18,8 @@ class Sample:
         timestamp: Näytteen tallettamisen aikaleima
     """
 
-    def __init__(self, sample_id, comment, anti_a, anti_b, anti_d, control, a1_cell, b_cell, timestamp):
+    def __init__(self, sample_id, comment, anti_a, anti_b,
+                 anti_d, control, a1_cell, b_cell, timestamp):
         """Luokan konstruktori, joka luo uuden näyteolion.
 
         Args:
@@ -32,6 +33,7 @@ class Sample:
             b_cell (int): B-solun tulos
             timestamp (str): Näytteen tallettamisen kellonaika
         """
+
         self.__sample_id = sample_id
         self.__comment = comment
         self.__anti_a = anti_a
@@ -49,6 +51,7 @@ class Sample:
         Returns:
             Merkkijono: näytetunniste
         """
+
         return self.__sample_id
 
     @property
@@ -58,6 +61,7 @@ class Sample:
         Returns:
             Merkkijono: näytekommentti
         """
+
         return self.__comment
 
     @property
@@ -67,6 +71,7 @@ class Sample:
         Returns:
             Kokonaisluku: Anti-A
         """
+
         return self.__anti_a
 
     @property
@@ -76,6 +81,7 @@ class Sample:
         Returns:
             Kokonaisluku: Anti-B
         """
+
         return self.__anti_b
 
     @property
@@ -85,6 +91,7 @@ class Sample:
         Returns:
             Kokonaisluku: Anti-D
         """
+
         return self.__anti_d
 
     @property
@@ -94,6 +101,7 @@ class Sample:
         Returns:
             Kokonaisluku: Kontrolli
         """
+
         return self.__control
 
     @property
@@ -103,6 +111,7 @@ class Sample:
         Returns:
             Kokonaisluku: A1-solu
         """
+
         return self.__a1_cell
 
     @property
@@ -112,6 +121,7 @@ class Sample:
         Returns:
             Kokonaisluku: B-solu
         """
+
         return self.__b_cell
 
     @property
@@ -121,14 +131,20 @@ class Sample:
         Returns:
             Merkkijono: näytteen tallentamisen aikaleima (vvvv-kk-pp hh:mm:ss)
         """
+
         return self.__timestamp
 
     def run_checks(self):
-        """Kutsuu ReactionLogic- ja ABOLogic-luokkien metodeja, jotka palauttavat näytteen tulosten tulkinnan
+        """Palauttaa näytteen tulosten tulkinnan ReactionLogic- ja ABOLogic-luokkien avulla
 
         Returns:
             Merkkijono: Näytteen tulosten tulkinta
         """
-        if ReactionLogic.run_reaction_check(self.__anti_a, self.__anti_b, self.__anti_d, self.__control, self.__a1_cell, self.__b_cell) is True:
-            return ABOLogic.run_abo_check(self.__anti_a, self.__anti_b, self.__anti_d, self.__a1_cell, self.__b_cell)
-        return ReactionLogic.run_reaction_check(self.__anti_a, self.__anti_b, self.__anti_d, self.__control, self.__a1_cell, self.__b_cell)
+
+        if ReactionLogic.run_reaction_check(self.__anti_a, self.__anti_b,
+                                            self.__anti_d, self.__control, self.__a1_cell, self.__b_cell) is True:
+            return ABOLogic.run_abo_check(self.__anti_a, self.__anti_b, self.__anti_d,
+                                          self.__a1_cell, self.__b_cell)
+
+        return ReactionLogic.run_reaction_check(self.__anti_a, self.__anti_b, self.__anti_d,
+                                                self.__control, self.__a1_cell, self.__b_cell)

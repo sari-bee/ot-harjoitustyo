@@ -3,12 +3,12 @@ import os
 from pathlib import Path
 from repositories.sample_repository import SampleRepository
 from entities.sample import Sample
+from config import SAMPLES_FILEPATH
 
 
 class TestSampleRepository(unittest.TestCase):
     def setUp(self):
-        dirname = os.path.dirname(__file__)
-        path = os.path.join(dirname, "..", "test_samples.csv")
+        path = SAMPLES_FILEPATH
         Path(path).touch()
         with open(path, "w") as file:
             file.write("")

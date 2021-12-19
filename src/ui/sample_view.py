@@ -1,9 +1,23 @@
 from tkinter import ttk, StringVar
+from emoji import emojize
 from services.sample_handler import SampleHandler
 
 
 class SampleView:
+    """Luokka luo näytenäkymän, jossa voi syöttää näytteen tiedot ja saada tulkinnan.
+    """
+
     def __init__(self, window, to_history, sample_handler, user_handler, user):
+        """Luokan konstruktori, joka luo näkymän.
+
+        Args:
+            window (window): ikkuna, johon näkymä luodaan
+            to_history: UI-luokan metodi, joka avaa historianäkymän
+            sample_handler (SampleHandler): käynnistyskerran näyteservice
+            user_handler (UserHandler): käynnistyskerran käyttäjäservice
+            user (User): käynnistyskerran sisäänkirjautunut käyttäjä
+        """
+
         self.__window = window
         self.__frame = None
         self.__to_history = to_history
@@ -36,7 +50,9 @@ class SampleView:
         self.__comment_box.set("")
 
         welcome = ttk.Label(
-            master=self.__window, text="Veriryhmäapuri", font="Helvetica 18 bold")
+            master=self.__window, text=(
+                emojize(":red_circle: Veriryhmäapuri :red_circle:")),
+            font="Helvetica 18 bold")
 
         give_sample_id = ttk.Label(
             master=self.__window, text="Anna näytetunniste:")
@@ -102,6 +118,15 @@ class SampleView:
         button_history.grid(row=11, column=0, columnspan=6, padx=5, pady=5)
 
     def check(self):
+        """
+        Haetaan käyttäjän syöttämät tiedot käyttöliittymästä.
+        Tarkistetaan, ovatko kaikki pakolliset kentät täytettyjä.
+        Tarkistetaan, ovatko syötteet valideja.
+        Tarkistetaan, onko käyttäjän syöttämä näytetunniste jo käytössä.
+        Talletetaan näytteen tiedot näyte- ja käyttäjätiedostoihin.
+        Annetaan tulkinta.
+        """
+
         sample_id = None
         comment = None
         anti_a = None
@@ -110,6 +135,7 @@ class SampleView:
         control = None
         a1_cell = None
         b_cell = None
+
         sample_id = self.__input_sample_id.get()
         comment = self.__input_comment_box.get()
         anti_a = self.__input_anti_a.get()
@@ -118,6 +144,7 @@ class SampleView:
         control = self.__input_control.get()
         a1_cell = self.__input_a1_cell.get()
         b_cell = self.__input_b_cell.get()
+
         if len(sample_id) == 0:
             self.__sample_id.set("Näytetunniste on pakollinen tieto!")
             self.__result.set("")
@@ -130,6 +157,7 @@ class SampleView:
             self.__result.set("Jokin reaktiovoimakkuus puuttuu!")
             self.__sample_id.set("")
             self.__comment_box.set("")
+
         elif SampleHandler.check_input(anti_a, anti_b, anti_d, control, a1_cell, b_cell) is True:
             if len(comment) == 0:
                 comment = "-"
@@ -141,10 +169,11 @@ class SampleView:
                 self.__comment_box.set("")
             else:
                 self.__user_handler.add_sample_to_user(self.__user, sample_id)
-                result = self.__sample_handler.get_results(sample_id)
-                self.__sample_id.set(f"Näytetunniste: {sample_id}")
-                self.__comment_box.set(f"Kommentti: \n {comment}")
-                self.__result.set(f"Tulkinta: \n {result}")
+                result = self.__sample_handler.get_results(sample_id.upper())
+                self.__sample_id.set(f"Näytetunniste: {sample_id.upper()}")
+                self.__comment_box.set(f"Kommentti: {comment}")
+                self.__result.set(f"Tulkinta: {result}")
+
         else:
             problem = SampleHandler.check_input(
                 anti_a, anti_b, anti_d, control, a1_cell, b_cell)
@@ -154,6 +183,9 @@ class SampleView:
             self.__comment_box.set("")
 
     def delete(self):
+        """Kenttien tyhjennys.
+        """
+
         self.__input_sample_id.delete(0, 'end')
         self.__sample_id.set("")
         self.__input_anti_a.delete(0, 'end')
@@ -167,4 +199,7 @@ class SampleView:
         self.__comment_box.set("")
 
     def history(self):
+        """Siirtyminen historiaikkunaan.
+        """
+
         self.__to_history(self.__user)

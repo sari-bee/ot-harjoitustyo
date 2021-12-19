@@ -19,4 +19,9 @@ Päivä | Tunnit | Tehtävä
 8.12. | 3 h | Ulkoasun hienosäätöä, refaktorointia ja yksikkötestien kirjoitusta
 12.12. | 3 h | Testausta, docstring-dokumentaatio, arkkitehtuurikuvaus ja käyttöohje
 13.12. | 2 h | Käyttöohjeen ja arkkitehtuurikuvauksen täydennys, release
-yht. | 44 h |
+14.12. | 2 h | TransfusionDirections-luokka ja konfiguraatioiden rakentamista
+15.12. | 2 h | Refaktorointia, testien täydennystä
+16.12. | 2 h | Pientä käyttöliittymän viilausta ja dokumentaation täydennystä
+17.12. | 2 h | Dokumentaation täydennystä
+19.12. | 3 h | Arkkitehtuuridokumentin viimeistely, lopputestaus ja release
+yht. | 55 h |

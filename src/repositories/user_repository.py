@@ -16,17 +16,20 @@ class UserRepository:
         Args:
             path (str): Polku konekohtaiseen csv-tiedostoon.
         """
-        self.path = path
+
+        self.__path = path
 
     def read(self):
-        """Metodi lukee talletettujen käyttäjien tiedot konekohtaisesta csv-tiedostosta ja muuntaa ne listaksi käyttäjäolioita.
+        """Metodi lukee talletettujen käyttäjien tiedot csv-tiedostosta ja muuntaa ne listaksi.
 
         Returns:
             Lista: Tallennetut käyttäjäoliot
         """
+
         users = []
-        Path(self.path).touch()
-        with open(self.path) as file:
+        Path(self.__path).touch()
+
+        with open(self.__path) as file:
             for row in file:
                 if row == "":
                     pass
@@ -34,24 +37,30 @@ class UserRepository:
                     pass
                 row = row.replace("\n", "")
                 split = row.split(";")
-                username = split[0]
-                sample_ids = []
-                i = 1
-                while i < len(split):
-                    sample_ids.append(split[i])
-                    i = i+1
-                user = User(username, sample_ids)
-                users.append(user)
+                if len(split) == 0:
+                    pass
+                else:
+                    username = split[0]
+                    sample_ids = []
+                    i = 1
+                    while i < len(split):
+                        sample_ids.append(split[i])
+                        i = i+1
+                    user = User(username, sample_ids)
+                    users.append(user)
+
         return users
 
     def write(self, users):
-        """Metodi tallentaa käyttäjäoliot konekohtaiseen csv-tiedostoon.
+        """Metodi tallentaa käyttäjäoliot csv-tiedostoon.
 
         Args:
             users (list): Lista käyttäjäolioita
         """
-        Path(self.path).touch()
-        with open(self.path, "w") as file:
+
+        Path(self.__path).touch()
+
+        with open(self.__path, "w") as file:
             for user in users:
                 row = user.username
                 for sample_id in user.sample_ids:
@@ -60,19 +69,22 @@ class UserRepository:
                 file.write(row)
 
     def add_user(self, new_user):
-        """Lisää uuden käyttäjäolion tallennettujen käyttäjien tiedostoon. 
+        """Lisää uuden käyttäjäolion tallennettujen käyttäjien tiedostoon.
 
         Args:
             new_user (User): Käyttäjäolio
 
         Returns:
-            False: jos lisättävän käyttäjän käyttäjätunnus löytyy jo tallennettujen käyttäjien listalta
+            False: jos lisättävän käyttäjän käyttäjätunnus löytyy jo käyttäjien listalta
             True: jos käyttäjän lisäys onnistui (eli käyttäjätunnus oli uniikki)
         """
+
         users = self.read()
+
         for user in users:
             if user.username == new_user.username:
                 return False
+
         users.append(new_user)
         self.write(users)
         return True
@@ -87,10 +99,13 @@ class UserRepository:
             User: Haluttu käyttäjäolio
             None: jos etsittävää käyttäjätunnusta ei löydy
         """
+
         users = self.read()
+
         for user in users:
             if user.username == username:
                 return user
+
         return None
 
     def add_sample(self, user: User, added_sample_id):
@@ -100,13 +115,16 @@ class UserRepository:
             user (User): Käyttäjä, jolle näytetunniste lisätään
             added_sample_id (str): Näytetunniste, joka halutaan lisätä käyttäjän listaan
         """
+
         users = self.read()
         i = 0
+
         while i < len(users):
             if users[i].username == user.username:
                 right_user = users[i]
                 break
             i = i+1
+
         right_user.add_sample_id(added_sample_id)
         users[i] = right_user
         self.write(users)
@@ -117,10 +135,13 @@ class UserRepository:
         Returns:
             Lista: käyttäjätunnukset
         """
+
         users = self.read()
         usernames = []
+
         for user in users:
             usernames.append(user.username)
+
         return usernames
 
     def get_sample_ids_by_user(self, wanted_user):
@@ -131,10 +152,13 @@ class UserRepository:
 
         Returns:
             Lista: lista käyttäjän tallentamien näytteiden näytetunnisteista
-            None: jos käyttäjää ei löydy (tosin tällaista tilannetta ei pitäisi koskaan tulla)
+            None: jos käyttäjää ei löydy
         """
+
         users = self.read()
+
         for user in users:
             if user.username == wanted_user.username:
                 return user.sample_ids
+
         return None

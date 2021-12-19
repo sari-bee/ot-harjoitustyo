@@ -1,6 +1,6 @@
-import os
 from repositories.user_repository import UserRepository
 from entities.user import User
+from config import USERS_FILEPATH
 
 
 class UserHandler:
@@ -12,11 +12,10 @@ class UserHandler:
     """
 
     def __init__(self):
-        """Luokan konstruktori, joka luo käynnistyskertakohtaisen käyttäjäpalvelun jh käyttäjärepositoryn
+        """Luokan konstruktori, joka luo käyttäjäpalvelun ja käyttäjärepositoryn
         """
-        dirname = os.path.dirname(__file__)
-        self.user_repository = UserRepository(
-            os.path.join(dirname, "../..", "data", "users.csv"))
+
+        self.user_repository = UserRepository(USERS_FILEPATH)
 
     def add_new_user(self, username):
         """Uuden käyttäjän lisäys käyttäjärepositorioon
@@ -28,6 +27,7 @@ class UserHandler:
             None: Jos käyttäjän lisääminen ei onnistu (käyttäjätunnus on jo käytössä)
             User: Jos käyttäjän lisääminen onnistuu
         """
+
         samples = []
         user = User(username, samples)
         success = self.user_repository.add_user(user)
@@ -45,15 +45,17 @@ class UserHandler:
             User: haettu käyttäjä
             None: jos käyttäjää ei löydy
         """
+
         return self.user_repository.find_user(username)
 
-    def add_sample_to_user(self, user, sample_id):
+    def add_sample_to_user(self, user, sample_id_raw):
         """Lisää käyttäjän listaukseen uuden näytetunnisteen
 
         Args:
             user (User): Käyttäjä, jolle näyte lisätään
             sample_id (str): Näytteen näytetunniste
         """
+        sample_id = sample_id_raw.upper()
         self.user_repository.add_sample(user, sample_id)
 
     def get_all_users(self):
@@ -61,8 +63,9 @@ class UserHandler:
 
         Returns:
             Lista: Käyttäjätunnukset
-            Merkkijono: jos käyttäjiä ei ole rekisteröity (käytännössä tällaista tilannetta ei pitäisi tulla)
+            Merkkijono: jos käyttäjiä ei ole rekisteröity
         """
+
         usernames = self.user_repository.get_usernames()
         if len(usernames) == 0:
             return "Ei vielä käyttäjiä."
@@ -77,6 +80,7 @@ class UserHandler:
         Returns:
             Kokonaisluku: Näytteiden määrä
         """
+
         samples = self.user_repository.get_sample_ids_by_user(user)
         return len(samples)
 
@@ -89,5 +93,6 @@ class UserHandler:
         Returns:
             Lista: lista käyttäjän tallentamien näytteiden näytetunnisteista
         """
+
         sample_ids = self.user_repository.get_sample_ids_by_user(user)
         return sample_ids

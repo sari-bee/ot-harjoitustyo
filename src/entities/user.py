@@ -14,6 +14,7 @@ class User:
             username (str): Käyttäjätunnus
             sample_ids (list): Lista käyttäjätunnukseen liitetyistä näytetunnisteista
         """
+
         self.__username = username
         self.__sample_ids = sample_ids
 
@@ -24,6 +25,7 @@ class User:
         Returns:
             Merkkijono: käyttäjätunnus
         """
+
         return self.__username
 
     @property
@@ -33,6 +35,7 @@ class User:
         Returns:
             Lista: käyttäjätunnukset
         """
+
         return self.__sample_ids
 
     def add_sample_id(self, sample_id):
@@ -41,4 +44,5 @@ class User:
         Args:
             sample_id (str): Näytetunniste
         """
+
         self.__sample_ids.append(sample_id)
