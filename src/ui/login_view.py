@@ -84,6 +84,8 @@ class LoginView:
             self.__login_button.config(state="disabled")
 
             self.__to_sample_view(user)
+        self.__input_new_username.delete(0, 'end')
+        self.__input_username.delete(0, 'end')
 
     def add_new_user(self):
         """Uuden käyttäjätunnuksen rekisteröiminen tai tieto, että käyttäjätunnus on käytössä.
@@ -104,3 +106,4 @@ class LoginView:
             else:
                 self.__message.set(
                     f"Käyttäjätunnus {username} on nyt rekisteröity. Voit kirjautua sisään.")
+        self.__input_new_username.delete(0, 'end')
