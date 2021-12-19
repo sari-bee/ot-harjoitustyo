@@ -1,5 +1,4 @@
 from tkinter import ttk, StringVar
-from emoji import emojize
 
 
 class LoginView:
@@ -35,8 +34,7 @@ class LoginView:
         self.__message.set("")
 
         welcome = ttk.Label(master=self.__window,
-                            text=(
-                                emojize(":red_circle: Tervetuloa veriryhmäapuriin :red_circle:")),
+                            text="Tervetuloa veriryhmäapuriin",
                             font="Helvetica 18 bold")
 
         give_username = ttk.Label(

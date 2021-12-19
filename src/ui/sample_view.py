@@ -1,5 +1,4 @@
 from tkinter import ttk, StringVar
-from emoji import emojize
 from services.sample_handler import SampleHandler
 
 
@@ -50,8 +49,7 @@ class SampleView:
         self.__comment_box.set("")
 
         welcome = ttk.Label(
-            master=self.__window, text=(
-                emojize(":red_circle: Veriryhmäapuri :red_circle:")),
+            master=self.__window, text="Veriryhmäapuri",
             font="Helvetica 18 bold")
 
         give_sample_id = ttk.Label(
