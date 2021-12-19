@@ -42,9 +42,7 @@ Testi-Tiina;ABCDE;12345;qwerty;789
 ```
 Käyttäjätunnus, näytetunnisteet puolipisteellä erotettuna
 
-## Päätoiminnallisuudet
-
-Toiminnallisuudet kuvataan tyypillisten käyttötapausten kautta.
+## Toiminnallisuudet
 
 ### Käyttäjätunnuksen luominen ja sisäänkirjautuminen
 
